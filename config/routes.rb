@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
  
+  get 'resource/create'
+
+  get 'resource/search'
+
+  get 'resource/delete'
+
+  get 'resource/index'
+
+  get 'resource/update'
+
   devise_for :users
 root to: "home#index"
  # The priority is based upon order of creation: first created -> highest priority.
