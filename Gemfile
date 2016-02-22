@@ -41,6 +41,9 @@ gem 'devise'
 #Use paperclip for file management
 gem 'paperclip'
 
+#Use rmagik for edit images
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
