@@ -1,0 +1,8 @@
+<%=form_for @resource, html: { :multipart => true }, url: {action: "create"} do |f| %>
+ Title <%= f.text_field :title %>
+ Author <%= f.text_field :author %>
+Description <%= f.text_field :description %>
+  <%= file_field_tag "files[]", type: :file, multiple: true %>
+  <%= f.submit "Create" %>
+  
+<%end%>

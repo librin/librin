@@ -1,2 +1,9 @@
-<h1>Resource#create</h1>
-<p>Find me in app/views/resource/create.html.erb</p>
+<% for document in @documents%>
+
+<%=document.resource_id%>-
+<%= link_to "Download", document.file.url(:original, false) %>
+<%=document.file_content_type%>
+<%=document.file_file_size/1000000.0%> MBs<br>
+<%end%>
+
+<%= link_to "pepito", "http://marca.com"%>

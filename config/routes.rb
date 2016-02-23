@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
  
-  get 'resource/create'
+  post 'resource/create'
 
+  get 'resource/create'
   get 'resource/search'
 
   get 'resource/delete'
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
   get 'resource/index'
 
   get 'resource/update'
+  
+  get 'resource/new'
+  
 
   devise_for :users
 root to: "home#index"
