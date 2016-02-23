@@ -9,22 +9,27 @@ class ResourceController < ApplicationController
         }
       end
     end
-   
-
+    index
+  render 'index'
   end
   
   def new
-    @resource=Resource.new
+    @resource = Resource.new
   end
 
   def search
+        @resources = Resource.search(params[:search],
+        field_weights: {title: 20, description: 10, author: 5},
+        match_mode: :boolean
+     )
+     puts @resources
   end
 
   def delete
   end
 
   def index
-     @documents=Document.all
+    # @documents=Document.all
   end
 
   def update

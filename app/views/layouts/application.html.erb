@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<%= render partial:  'header_template'%>
+	</header>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 <%= yield %>
