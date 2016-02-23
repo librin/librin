@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'resource/create'
   get 'resource/search'
+  post 'resource/search'
 
   get 'resource/delete'
 
