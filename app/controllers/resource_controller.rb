@@ -1,4 +1,5 @@
 class ResourceController < ApplicationController
+ before_action :authenticate_user!
   
   def create
     @resource = Resource.new(add_params)
