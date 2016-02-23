@@ -29,13 +29,16 @@ class ResourceController < ApplicationController
   end
 
   def index
-    # @documents=Document.all
+
+     @documents=Document.all
+     @resources=Resource.all
+
   end
 
   def update
   end
   
   def add_params
-    params.require(:resource).permit(:title,:description,:author,:files=>[])
+    params.require(:resource).permit(:title,:description,:author,:cover,:files=>[])
   end
 end

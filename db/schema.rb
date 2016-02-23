@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223075846) do
+ActiveRecord::Schema.define(version: 20160223091445) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "resource_id",       limit: 4
@@ -36,10 +36,13 @@ ActiveRecord::Schema.define(version: 20160223075846) do
     t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size",    limit: 4
     t.datetime "cover_updated_at"
+<<<<<<< HEAD
     t.string   "file_file_name",     limit: 255
     t.string   "file_content_type",  limit: 255
     t.integer  "file_file_size",     limit: 4
     t.datetime "file_updated_at"
+=======
+>>>>>>> 6d35f7413d5a5bf6fc576181a2cc7938de85b2fc
   end
 
   create_table "users", force: :cascade do |t|
