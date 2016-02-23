@@ -6,3 +6,10 @@
 <%=document.file_file_size/1000000.0%> MBs<br>
 <%end%>
 
+<% for resource in @resources %>
+<%= resource.title %>
+<%= resource.author %>
+<%= resource.description %>
+<%= image_tag resource.cover.url(:thumb)%>
+<% end %>
+

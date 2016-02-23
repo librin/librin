@@ -2,6 +2,7 @@
  Title <%= f.text_field :title %>
  Author <%= f.text_field :author %>
 Description <%= f.text_field :description %>
+Cover <%= f.file_field :cover %>
   <%= file_field_tag "files[]", type: :file, multiple: true %>
   <%= f.submit "Create" %>
   
