@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223091445) do
+ActiveRecord::Schema.define(version: 20160223105431) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "resource_id",       limit: 4
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 20160223091445) do
     t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size",    limit: 4
     t.datetime "cover_updated_at"
+  end
+
+  create_table "resources_tags", id: false, force: :cascade do |t|
+    t.integer "resources_id", limit: 4
+    t.integer "tags_id",      limit: 4
+  end
+
+  add_index "resources_tags", ["resources_id"], name: "index_resources_tags_on_resources_id", using: :btree
+  add_index "resources_tags", ["tags_id"], name: "index_resources_tags_on_tags_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
