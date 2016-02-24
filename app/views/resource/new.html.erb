@@ -1,11 +1,12 @@
 
 
 <%=form_for @resource, html: { :multipart => true }, url: {action: "create"} do |f| %>
- Title <%= f.text_field :title %>
- Author <%= f.text_field :author %>
-Description <%= f.text_field :description %>
-Cover <%= f.file_field :cover %>
-  <%= file_field_tag "files[]", type: :file, multiple: true %>
+ Title <%= f.text_field :title %><br />
+ Author <%= f.text_field :author %><br />
+Description <%= f.text_field :description %><br />
+Cover <%= f.file_field :cover %><br />
+  <%= file_field_tag "files[]", type: :file, multiple: true %><br />
+Tags (separados por comas) <%= text_field_tag :tags%><br />
   <%= f.submit "Create" %>
   
 <%end%>

@@ -5,10 +5,16 @@ class CreateTags < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    #Table resources_tag created
-    create_table :resources_tags, id: false do |t|
-      t.belongs_to :resources, index: true
-      t.belongs_to :tags, index: true
+    create_table :resources_tags, :id => false do |t|
+    t.references :resource, :tag
     end
+
+    add_index :resources_tags, [:resource_id, :tag_id]
+    
+    #Table resources_tag created
+    #create_table :resources_tags, id: false do |t|
+     # t.belongs_to :resources, index: true
+      #t.belongs_to :tags, index: true
+    #end
   end
 end

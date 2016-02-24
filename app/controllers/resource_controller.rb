@@ -9,9 +9,38 @@ class ResourceController < ApplicationController
           @resource.documents.create(file: file)
         }
       end
+      if params[:tags]
+        tags=params[:tags].split(",")
+        tags.each_index{|x| tags[x]=tags[x].strip}
+        tagsObjects = Tag.all
+        tags.each {|tagS|
+          newTag = Tag.find_or_initialize_by(:name =>tagS)
+          puts "el tag es:"
+          puts newTag
+          @resource.tags<< newTag
+
+        }
+      end
     end
-    index
-  render 'index'
+    
+
+=begin        tag = tagsObjects.where(:name => tagS)
+        puts "El tag es"
+        puts tag
+        
+       if tag != nil then
+          puts "Ha encontrado el tag"
+          @resource.tags << tag
+          @resource.save
+       else
+         puts "No ha encontrado el tag"
+          tag = Tag.new
+          tag.name = tagS
+          puts tag
+          @resource.tags << tag
+          @resource.save 
+=end
+
   end
   
   def new
@@ -30,7 +59,6 @@ class ResourceController < ApplicationController
   end
 
   def index
-
      @documents=Document.all
      @resources=Resource.all
 
@@ -40,6 +68,6 @@ class ResourceController < ApplicationController
   end
   
   def add_params
-    params.require(:resource).permit(:title,:description,:author,:cover,:files=>[])
+    params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
   end
 end

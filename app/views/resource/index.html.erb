@@ -7,9 +7,15 @@
 <%end%>
 
 <% for resource in @resources %>
-<%= resource.title %>
-<%= resource.author %>
-<%= resource.description %>
-<%= image_tag resource.cover.url(:thumb)%>
+<%= image_tag resource.cover.url(:thumb)%><br>
+<%= resource.title %><br>
+<%= resource.author %><br>
+<%= resource.description %><br>
+<% resource.tags.each{|tag| %>
+	<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
+	<%}%>
+<br>
+----------------
+<br>
 <% end %>
 

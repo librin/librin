@@ -32,10 +32,6 @@ ActiveRecord::Schema.define(version: 20160223105431) do
     t.integer  "views",              limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.string   "img_file_name",      limit: 255
-    t.string   "img_content_type",   limit: 255
-    t.integer  "img_file_size",      limit: 4
-    t.datetime "img_updated_at"
     t.string   "cover_file_name",    limit: 255
     t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size",    limit: 4
@@ -43,12 +39,11 @@ ActiveRecord::Schema.define(version: 20160223105431) do
   end
 
   create_table "resources_tags", id: false, force: :cascade do |t|
-    t.integer "resources_id", limit: 4
-    t.integer "tags_id",      limit: 4
+    t.integer "resource_id", limit: 4
+    t.integer "tag_id",      limit: 4
   end
 
-  add_index "resources_tags", ["resources_id"], name: "index_resources_tags_on_resources_id", using: :btree
-  add_index "resources_tags", ["tags_id"], name: "index_resources_tags_on_tags_id", using: :btree
+  add_index "resources_tags", ["resource_id", "tag_id"], name: "index_resources_tags_on_resource_id_and_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -75,10 +70,6 @@ ActiveRecord::Schema.define(version: 20160223105431) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.string   "avatar_file_name",       limit: 255
-    t.string   "avatar_content_type",    limit: 255
-    t.integer  "avatar_file_size",       limit: 4
-    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
