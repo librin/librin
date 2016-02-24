@@ -11,6 +11,7 @@
 <%= resource.title %><br>
 <%= resource.author %><br>
 <%= resource.description %><br>
+<%= resource.user.email %><br>
 <% resource.tags.each{|tag| %>
 	<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
 	<%}%>

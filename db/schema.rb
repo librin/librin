@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160223105431) do
     t.string   "author",             limit: 255
     t.text     "description",        limit: 65535
     t.integer  "views",              limit: 4
+    t.integer  "user_id",            limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "cover_file_name",    limit: 255
@@ -37,6 +38,8 @@ ActiveRecord::Schema.define(version: 20160223105431) do
     t.integer  "cover_file_size",    limit: 4
     t.datetime "cover_updated_at"
   end
+
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
 
   create_table "resources_tags", id: false, force: :cascade do |t|
     t.integer "resource_id", limit: 4

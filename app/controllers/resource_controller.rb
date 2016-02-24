@@ -2,7 +2,7 @@ class ResourceController < ApplicationController
  before_action :authenticate_user!
   
   def create
-    @resource = Resource.new(add_params)
+    @resource = current_user.resources.new(add_params)
     if @resource.save   
       if params[:files]
         params[:files].each { |file|

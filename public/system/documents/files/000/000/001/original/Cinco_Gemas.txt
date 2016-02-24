@@ -1,0 +1,51 @@
+Cinco gemas indispensables para programar aplicaciones con Ruby on Rails
+
+
+A día de hoy, existen numerosas gemas de Ruby para realizar tareas realmente dispares. Y es que el número de éstas ha aumentado considerablemente en los últimos años, proveyendo a los desarrolladores de todo un pequeño universo de librerías útiles con las que facilitarles el trabajo. En este breve especial, voy a tratar de describir algunas de las gemas que considero imprescindible conocer, pues cubren algunas de las funcionalidades más habituales que solemos encontrar en forma de requisitos en muchas aplicaciones, de modo que podamos integrarlas en nuestra aplicación escrita en Ruby on Rails para cumplir sobradamente estas necesidades.
+
+Carrierwave
+
+Esta gema escrita por Jonas Nicklas nos sirve para añadir a nuestra aplicación la posibilidad de almacenar y procesar ficheros subidos por nuestros usuarios. Si bien han existido numerosos plugins para realizar esta misma función anteriormente (attachment_fu, paperclip, y otros), esta gema utiliza una separación de código bastante limpia, guardando cada uploader como una clase propia donde podemos especificar reglas concretas para manipular esos ficheros que nos adjuntan.
+
+Se integra con cualquier aplicación Rack, de modo que podemos utilizarla tanto con Ruby on Rails, como con cualquier otro framework basado en este adaptador (Sinatra, Merb, Camping…). Además, es capaz de utilizar proveedores de almacenamiento como Amazon S3, Google Storage, Rackspace Cloud Files, y otros, de modo que los ficheros entrantes, una vez procesados, puedan ser guardados utilizando alguno de estos servicios. Al tratarse de módulos separados, es fácil extender la gema para agregar cualquier otro servicio de almacenamiento.
+
+También permite utilizar RMagick, ImageScience o MiniMagick cuando los ficheros a tratar sean imágenes, de modo que podamos hacer recortes, escalados, y cualquier otro efecto sobre la imagen que soporte la librería que hayamos elegido. Nuevamente, esta funcionalidad se agrega en forma de módulo, de modo que podemos crearnos el nuestro propio para realizar cualquier otro tipo de manipulación deseada y que no esté soportada (ej: extracción de texto de un PDF, parseo de un archivo separado por comas, etc).
+
+Su código se puede encontrar en Github.
+
+Kaminari
+
+Gracias a esta gema de Akira Matsuda, la paginación de objetos se torna sencilla y elegante. Nuevamente, existen muchas otras opciones perfectamente válidas, siendo la más conocida will_paginate. Pero esta gema aprovecha la posibilidad de definir scopes en ORMs como ActiveRecord, Mongoid o Mongomapper, de modo que su código se torna más sencillo, y la personalización del aspecto del paginador es bastante más elegante. De hecho, esta personalización visual es extensible en forma de themes, de modo que ya empiezan a aparecer algunas gemas con dichos themes para adoptar el aspecto de paginadores como los de GitHub, Google, etc.
+
+La paginación no se limita a instancias devueltas por nuestro ORM favorito, sino que podemos paginar también arrays utilizando un wrapper:
+
+  Kaminari.paginate_array(my_array_object).page(params[:page]).per(10)
+Su código se puede encontrar en Github.
+
+OmniAuth
+
+Gemas para tratar el problema de la autentificación de usuarios hay muchas, aunque yo sigo más la costumbre de crear mi propio sistema de registro y autentificación de usuarios, ya que es una tarea relativamente sencilla y que permite luego un mayor grado de personalización (tratar de adaptar el comportamiento de gemas como Devise se puede tornar complicado).
+
+Pero empieza a ser muy habitual que necesitemos permitir la autentificación mediante cuentas de otras plataformas como Facebook, Twitter, Google Apps, y otros. Y aquí es donde viene a ayudarnos OmniAuth.
+
+Con esta gema elaborada por los chicos de Intridea, y habitualmente agregando tan sólo un nuevo controlador por cada servicio para crear la sesión, así como la carga de un middleware, podemos habilitar la posibilidad de que el usuario se autentifique usando su cuenta en ese servicio, así como obtener toda clase de información relativa al usuario que se ha logueado (nombre y apellidos, nick, email, etc; los datos proporcionados dependen del servicio utilizado).
+
+Así que ya no hay excusa para añadir esta posibilidad a tu aplicación Rails. El código de la gema se puede encontrar en GitHub.
+
+Ancestry
+
+¿Necesitas añadir una jerarquía a tus modelos? Esta gema viene a tu rescate. Los resultados son similares a otros plugins como acts_as_tree, pero gracias a la gema de Stefan Kroes, el almacenamiento de la jerarquía es bastante eficiente, puesto que se guarda en cada instancia en forma de ruta de ids desde el objeto padre hasta la propia instancia (por ejemplo, “12/83” indica que el objeto actual tiene como padre al objeto con id 83, que a su vez tiene como padre al objeto con id 12), de modo que utilizando búsquedas de texto en este path se pueden obtener fácilmente elementos como los objetos raíz (aquellos cuyo path no contiene nada), los hijos de un objeto (aquellos que tienen en el path la subcadena con el id del padre seguida de una barra), etc.
+
+La cantidad de métodos para moverse a través del árbol, así como comprobadores de condiciones (si el nodo tiene hijos, si es el único hijo, etc) es verdaderamente amplia. La forma en que los objetos que quedan huérfanos son tratados es personalizable. En general, una gema muy sencilla de usar, y que proporciona la funcionalidad de organización de las instancias de tu modelo en forma de árbol con una solución elegante y eficiente.
+
+Su código en GitHub.
+
+aasm
+
+Por último, no quisiera dejarme a una gema de Scott Barron que nos permitirá construir una máquina de estados en nuestro modelo, de modo que podamos definir en ellos un conjunto de estados y de transiciones permisibles entre los mismos. Así, podemos separar nuestras instancias en dichos estados, y asegurarnos de que cuando cambien de un estado a otro, se ejecuten determinadas acciones definidas en nuestro modelo. También nos permite impedir que un modelo cambie de un estado a otro si no le está permitido. Es ideal para controlar cosas como el workflow de un objeto que representa un documento, tarea, etc.
+
+Su código en GitHub.
+
+Conclusiones
+
+En posteriores posts, os hablaré de algunas de mis gemas favoritas en otras tareas como el testeo unitario. Mientras tanto, os pregunto: ¿Cuáles son vuestras otras gemas favoritas?
