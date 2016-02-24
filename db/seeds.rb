@@ -1,6 +1,4 @@
-User.create!([
-  {userName: nil, firstName: nil, lastName: nil, twitter: nil, linkedin: nil, github: nil, email: "test@test.com", encrypted_password: "$2a$10$/Q0ys34pODR91fnURGjLeeRRmw9jdXirSkpRgOlJ6nJs8Vc2Lf1BS", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-02-24 11:22:43", last_sign_in_at: "2016-02-24 11:22:43", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
-])
+
 Document.create!([
   {resource_id: 1, file_file_name: "Caso_Practico_15RUBY.pdf", file_content_type: "application/pdf", file_file_size: 638470, file_updated_at: "2016-02-24 11:24:49"},
   {resource_id: 2, file_file_name: "Cinco_Gemas.txt", file_content_type: "text/plain", file_file_size: 6484, file_updated_at: "2016-02-24 11:30:21"},
