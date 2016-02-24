@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   post 'resource/search'
 
   get 'resource/delete'
+  get 'resource/file'
 
   get 'resource/index'
 
   get 'resource/update'
   
-  get 'resource/new'
-  
+  get 'resource/profile'
+  post 'resource/profile'
+
 
   devise_for :users
 root to: "resource#index"

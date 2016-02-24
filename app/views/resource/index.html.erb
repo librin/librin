@@ -1,15 +1,35 @@
-<% for document in @documents%>
 
-<%=document.resource_id%>-
-<%= link_to "Download", document.file.url(:original, false) %>
-<%=document.file_content_type%>
-<%=document.file_file_size/1000000.0%> MBs<br>
-<%end%>
+<div class = "irPerfil">
+<a href="/resource/profile">Ir a Perfil: Subir archivo</a>
+</div>
 
-<% for resource in @resources %>
-<%= resource.title %>
-<%= resource.author %>
-<%= resource.description %>
-<%= image_tag resource.cover.url(:thumb)%>
-<% end %>
+	<!-- Sin búsqueda, sacamos los ultimos subidos-->
+
+<h1>Bienvenido a LibrIN</h1>
+
+<h2>Últimos recursos subidos (por definir)</h2>
+
+	<% for document in @documents do%>
+		<%=document.resource_id%>-
+		<%= link_to "Download", document.file.url(:original, false) %>
+		<%=document.file_content_type%>
+		<%=document.file_file_size/1000000.0%> MBs<br>
+	<%end%>
+	
+	
+	<!-- Sacar resultados de busqueda por pantalla-->
+<table>
+	<% cont = 1 
+	if cont < 3 then
+	  for resource in @resources do%>
+		<tr>
+			<td>
+			<%= resource.title %><br>
+			<%= image_tag resource.cover.url(:thumb)%>
+			</td>
+		</tr>
+		else
+	<%end%>
+</table>
+
 

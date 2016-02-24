@@ -1,0 +1,25 @@
+<h1>Descarga tu libro</h1>
+
+<div class = "alUsuariodescarga">
+	<a href=>Usuario que aportador</a>
+</div>
+
+<table>
+	<tr>
+		<td><%= image_tag resource.cover.url(:thumb)%></td>
+	</tr>
+	<tr>
+		<td><%= resource.title %></td>
+	</tr>
+	<tr>
+		<td><%= resource.author %></td>
+	</tr>
+	<tr>
+		<% for document in resource.documents d%>
+		<td><%= link_to "Descargar", document.file.url(:original, false)%></td>	
+		<%end%>
+	</tr>
+	<tr>
+		<td><%= resource.description %></td>
+	</tr>
+</table>

@@ -5,7 +5,7 @@ class ResourceController < ApplicationController
     @resource = Resource.new(add_params)
     if @resource.save   
       if params[:files]
-        params[:files].each { |file|
+         params[:files].each { |file|
           @resource.documents.create(file: file)
         }
       end
@@ -23,17 +23,15 @@ class ResourceController < ApplicationController
         field_weights: {title: 20, description: 10, author: 5},
         match_mode: :boolean
      )
-     puts @resources
+     puts @resources  
   end
 
   def delete
   end
 
   def index
-
-     @documents=Document.all
-     @resources=Resource.all
-
+     @documents = Document.all
+     @resources = Resource.all
   end
 
   def update
