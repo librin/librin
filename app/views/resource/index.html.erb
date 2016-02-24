@@ -1,11 +1,29 @@
 <% for document in @documents%>
-
+<!--
 <%=document.resource_id%>-
 <%= link_to "Download", document.file.url(:original, false) %>
 <%=document.file_content_type%>
 <%=document.file_file_size/1000000.0%> MBs<br>
 <%end%>
+-->
 
+<h3>Recursos Subidos</h3>
+<% for resource in @resources %>
+<div id="resources"></div>
+<a href ="/resource/file?id=<%=resource.id%>">
+	<div class="resource">
+	<%= hidden_field_tag(:id)%>
+	<%= image_tag resource.cover.url(:thumb)%><br />
+	<span><%= resource.title %></span><br />
+	<span><%= resource.author %></span><br />
+	<!--<span><%= resource.description %></span>-->
+		
+</div> </a>
+<!---->
+<% end %>
+
+
+<!--
 <% for resource in @resources %>
 <%= image_tag resource.cover.url(:thumb)%><br>
 <%= resource.title %><br>
@@ -19,4 +37,4 @@
 ----------------
 <br>
 <% end %>
-
+-->

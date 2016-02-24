@@ -18,29 +18,10 @@ class ResourceController < ApplicationController
           puts "el tag es:"
           puts newTag
           @resource.tags<< newTag
-
         }
       end
     end
     
-
-=begin        tag = tagsObjects.where(:name => tagS)
-        puts "El tag es"
-        puts tag
-        
-       if tag != nil then
-          puts "Ha encontrado el tag"
-          @resource.tags << tag
-          @resource.save
-       else
-         puts "No ha encontrado el tag"
-          tag = Tag.new
-          tag.name = tagS
-          puts tag
-          @resource.tags << tag
-          @resource.save 
-=end
-
   end
   
   def new
@@ -55,16 +36,17 @@ class ResourceController < ApplicationController
      puts @resources
   end
 
-  def delete
-  end
-
   def index
      @documents=Document.all
      @resources=Resource.all
-
   end
-
-  def update
+  
+  def file
+    id = params[:id]
+   @resource = Resource.find id
+   @resources = Resource.all
+   @documents = Document.all
+   @tags = Tag.all
   end
   
   def add_params

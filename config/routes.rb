@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   get 'resource/index'
 
-  get 'resource/update'
+  get 'resource/file'
   
-  get 'resource/new'
+  get 'resource/profile'
   
 
   devise_for :users

@@ -1,0 +1,42 @@
+<div class = "usuario">
+<ul>
+	<li>Nombre y apellidos del usuario</li>
+	<li>Descripción departamento</li>
+	<li>Redes Sociales</li>
+</ul>
+<div>
+
+<div class = "upload" >
+<h2>Comparte recursos</h2>
+	<table>
+		<%= form_for @resource, html: { :multipart => true }, url: {action: "create"} do |f| %>
+		<tr>
+			<td><%= f.label :title, "Título"%><br></td>
+			<td><%= f.text_field :title %></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :author, "Autor"%><br></td>
+			<td><%= f.text_field :author %></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :description, "Descripción"%><br></td>
+			<td><%= f.text_field :description %></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :tags, "Tags (separados por comas)"%><br></td>
+			<td><%= text_field_tag :tags%></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :cover, "Portada"%><br></td>
+			<td><%= f.file_field :cover %></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :files, "Archivos"%><br></td>
+			<td><%= file_field_tag "files[]", type: :file, multiple: true %></td>	
+		</tr>
+ 		<tr>
+ 			<td colspan="2"><%= f.submit "Comparte!" %></td>
+ 		</tr>
+		<%end%>	
+	</table>
+</div>
