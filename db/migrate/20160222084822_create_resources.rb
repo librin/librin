@@ -5,6 +5,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :author
       t.text :description
       t.integer :views
+      
 
       t.timestamps null: false
     end

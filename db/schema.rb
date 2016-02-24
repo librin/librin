@@ -36,13 +36,6 @@ ActiveRecord::Schema.define(version: 20160223105431) do
     t.string   "cover_content_type", limit: 255
     t.integer  "cover_file_size",    limit: 4
     t.datetime "cover_updated_at"
-<<<<<<< HEAD
-    t.string   "file_file_name",     limit: 255
-    t.string   "file_content_type",  limit: 255
-    t.integer  "file_file_size",     limit: 4
-    t.datetime "file_updated_at"
-=======
->>>>>>> 6d35f7413d5a5bf6fc576181a2cc7938de85b2fc
   end
 
   create_table "resources_tags", id: false, force: :cascade do |t|

@@ -3,16 +3,35 @@
 <head>
   <title>Librin</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=BenchNine:700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon_librin.png' %>
 </head>
 <body>
 	<header>
-		<%= render partial:  'header_template'%>
+		<!--<div><%= image_tag("favicon_librin.png", :styles => { :thumb => "100x100>" })%></div>-->
+	
+  	 	
+
+  	 	<div class="nav">
+      <ul>
+        <li class="ranking"><a href="#">Ranking</a></li>
+        <li class="create"><a href="#">Subir</a></li>
+        <li class="download"><a href="#">Descargar</a></li>
+        <li class="profile"><a href="#">Perfil</a></li>
+        <li class="search"><a href="#"><%= render partial:  'header_template'%></a></li>
+      </ul>
+    </div>
+
+
 	</header>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
+       
 <%= yield %>
+
+
 
 </body>
 </html>
