@@ -1,0 +1,25 @@
+
+
+<div class = "alUsuariodescarga">
+	<a href="#">Usuario que aporta</a>
+</div>
+<h1>Descarga tu libro</h1>
+
+	<ul>
+		<li><%= image_tag @resource.cover.url(:medium)%></li>
+		<li>TITULO <%= @resource.title %></li>	
+		<li>AUTOR <%= @resource.author %></li>
+			<% for document in @resource.documents%>
+				
+					<li>LINK <%= link_to "Descargar", document.file.url(:original, false)%></li>
+			<%end%>
+		<li>
+			<% @resource.tags.each{|tag| %>
+			TAGS <a href=/resource/search?search=<%=tag.id%>> <%=tag.name%></a>
+			<%}%>
+		</li>
+		DESCRIPCION <li><%= @resource.description %></li>
+	</ul>
+	
+<p><a href="/resource/index">Inicio</a></p>
+<p><a href="/resource/profile">Subir archivo</a></p>

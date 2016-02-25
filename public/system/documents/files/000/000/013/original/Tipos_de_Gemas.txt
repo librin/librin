@@ -1,0 +1,45 @@
+Bibliotecas
+
+
+Existen fascinantes, útiles y variadas bibliotecas para Ruby, muchas disponibles como un conveniente archivo gem. Otras bibliotecas son liberadas como directorios comprimidos (.zip o .tar.gz) de código fuente. Veamos cómo encontrar e instalar bibliotecas para que puedas utilizarlas.
+
+Encontrando bibliotecas
+RubyGems es la herramienta preferida por la comunidad para distribuir código. Por lo general, las gemas tienen enlaces hacia la documentación e información sobre los desarrolladores, así que es un buen punto de partida para comenzar a explorar el mundo Ruby.
+
+Muchos proyectos utilizan GitHub para albergar sus repositorios. Puedes explorar el sitio para conocer más sobre cada librería y para colaborar.
+
+RubyForge cayó en desuso en los últimos años y ya no es una fuente confiable. Antes de RubyGems y GitHub, era el mejor lugar para buscar librerías de Ruby. Un buen lugar para navegar es su mapa de software, donde se alistan las bibliotecas por tópico. (Si terminas creando tus propias bibliotecas, puedes registrar tu proyecto en RubyForge para obtener acceso gratuito a Subversion, espacio web y listas de correo).
+
+Otro sitio que cayó en desuso es el Ruby Application Archive (o RAA). Se trata de un directorio de software Ruby de todo tipo, categorizado por su funcionalidad. En este momento, la categoría Base de Datos (Database) tiene la mayor cantidad de items, liderando sobre Red (Net) por 1. HTML y XML también son populares. Incluso hay 4 items sobre Física.
+
+Usando RubyGems
+Mientras que el instalador de Windows incluye RubyGems, muchos sistemas operativos no lo hacen. Aprende cómo instalar RubyGems aquí debajo si estos comandos no te funcionan.
+
+Buscando gemas
+El comando search puede ser usado para buscar gemas con determinado nombre. Para buscar la palabra “html” en el nombre de una gema:
+
+$ gem search html --remote
+
+*** REMOTE GEMS ***
+
+html-sample (1.0, 1.1)
+(La opción --remote / -r indica que estamos buscando entre las gemas oficiales de RubyForge).
+
+Instalando una gema
+Una vez que sabes qué gema te gustaría instalar:
+
+$ gem install html-sample
+Incluso puedes instalar una versión específica de la biblioteca utilizando la opción --version.
+
+$ gem install html-sample --version 1.0
+Alistando todas las gemas
+Para obtener una lista completa de las gemas en RubyForge:
+
+$ gem list --remote
+Para alistar sólo las gemas que tienes instaladas, quita la opción—remote.
+
+$ gem list
+Para obtener más información sobre el uso de RubyGems, estudia la documentación oficial que incluye ejemplos de cómo usar gemas en tus programas Ruby.
+
+Cómo instalar RubyGems
+Para instalar RubyGems, sigue las instrucciones que se detallan en https://rubygems.org/pages/download.

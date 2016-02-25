@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   get 'resource/search'
   post 'resource/search'
 
-  get 'resource/delete'
+  get 'resource/profile'
 
   get 'resource/index'
 
-  get 'resource/update'
+  get 'resource/file'
   
-  get 'resource/new'
+  get 'resource/profile'
   
 
   devise_for :users
