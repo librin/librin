@@ -33,8 +33,8 @@ class ResourceController < ApplicationController
 
   def search
         @resources = Resource.search(params[:search],
-        field_weights: {title: 20, description: 10, author: 5},
-        match_mode: :boolean
+        field_weights: {title: 20, tags: 17, description: 10, author: 5},
+        match_mode: :boolean,
      )
      puts @resources
   end
