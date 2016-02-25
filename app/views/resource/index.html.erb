@@ -7,9 +7,10 @@
 <%end%>
 <h3>Recursos Subidos</h3>
 <% for resource in @resources %>
-<div id="resources"></div>
+<div id="resources">
 <div class="resource"><%= image_tag resource.cover.url(:thumb)%><br /><span><%= resource.title %></span><br /><span><%= resource.author %></span><br /><span>
 <%= resource.description %></span></div> 
+</div>
 <!---->
 <% end %>
 
