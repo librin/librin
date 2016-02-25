@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	background-color: #F9FCD9;
+	font-family: 'BenchNine', sans-serif;
+	font-size: 1.2em;
+}
+
 #resources { 
 margin:0 auto; 
 }
@@ -28,3 +35,80 @@ margin:0 auto;
    border-bottom: #a5a7aa solid 1px; 
    text-align:center; 
 }
+
+
+
+.resourcefile { 
+   float:left; 
+   width:210px; 
+   height:180px; 
+   margin: 10px; 
+   padding:5px; 
+   background-color:#f5f7f9; 
+   border-right: #a5a7aa solid 1px; 
+   border-bottom: #a5a7aa solid 1px; 
+   text-align:center; 
+}
+
+
+.nav ul {
+  list-style: none;
+  background-color: #BACB50;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+.nav li {
+  font-family: 'BenchNine', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 40px;
+  width: 120px;
+  height: 70px;
+  border-bottom: 1px solid #888;
+}
+ 
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: .3s background-color;
+}
+ 
+.nav a:hover {
+  background-color: #6F7F0F;
+}
+ 
+ 
+@media screen and (min-width: 600px) {
+  .nav li {
+    width: 120px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+ 
+  /* Option 1 - Display Inline  */
+  .nav li {
+    display: inline-block;
+    margin-right: -4px;
+  }
+
+  /* Options 2 - Float 
+  .nav li {
+    float: left;
+  }
+  .nav ul {
+    overflow: auto;
+    width: 1100px;
+    margin: 0 auto;
+  }
+  .nav {
+    background-color: #BE873A;
+  }
+ 
+}
+*/

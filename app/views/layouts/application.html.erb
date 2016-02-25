@@ -3,16 +3,21 @@
 <head>
   <title>Librin</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=BenchNine:700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon_librin.png' %>
 </head>
 <body>
 	<header>
-		<%= render partial:  'header_template'%>
+  	 	<%= render partial:  'header_template'%>
 	</header>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
+       
 <%= yield %>
+
+
 
 </body>
 </html>

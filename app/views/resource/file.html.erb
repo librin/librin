@@ -1,4 +1,4 @@
-<p><a href="/resource/index">Inicio</a></p> <p><a href="/resource/profile">Subir archivo</a></p>
+
 
 <h1>Descarga tu libro</h1>
 <main>
@@ -9,7 +9,7 @@
 			<div class = "descargar"><%= link_to "Descarga archivo", document.file.url(:original, false)%></div>
 		<%end%>
 	<div class = "tags">
-			<% @resource.tags.each{|tag| %>
+			TAGS: <% @resource.tags.each{|tag| %>
 			<a href=/resource/search?search=<%=tag.id%>> <%=tag.name%></a>
 			<%}%>
 	</div>

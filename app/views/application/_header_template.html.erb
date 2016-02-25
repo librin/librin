@@ -1,17 +1,24 @@
+<div class="nav">  	 	
+      <ul>
+      	<li><a href="/resource/index"><%= image_tag("header_librin.png")%></a></li>
+        <!--<li class="ranking"><a href="#">Ranking</a></li>-->
+        <li class="create"><a href="/resource/profile">Subir</a></li>
+        <li class="profile"><a href="/resource/profile">Perfil</a></li>
 
-
-	<%if user_signed_in? %>
-		<%= form_tag('/resource/search', method: "get") do%>
+        
+		<%if user_signed_in? %>
+			<li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+		<%end%>
+		<li>
+		<%if user_signed_in? %>
+			<%= form_tag('/resource/search', method: "get") do%>
+			<%= text_field_tag :search, params[:search]%>
+			<%= submit_tag(value="Buscar")%>
+		<%end%>
+		<%end%>
+		</li>
+		 
 		
-		<%= text_field_tag :search, params[:search]%>
-		<%= submit_tag(value="Buscar")%>
-	<%end%>
-	<%end%><br/>
-	
-	<%if user_signed_in? %>
-		<%= link_to 'Log Out', destroy_user_session_path,
-		method: :delete %>
-	
-	<%end%>
-	
+	  </ul>
+</div>
 
