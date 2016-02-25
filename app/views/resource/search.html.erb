@@ -1,19 +1,24 @@
 <h1>Resultados de la búsqueda</h1>
 <table>
-<% for resource in @resources do%>
 	<tr>
 		<th>TITULO</th><th>AUTOR</th><th>TAGS</th><th>DESCARGAR</th>
 	</tr>
-	
+		<% 
+		for resource in @resources do
+			tagString = ""
+			for tag in resource.tags do
+				tagString += "#{tag.name} "
+			end
+		%>
 	<tr>
 		<td><%= resource.title%></td>
 		<td><%= resource.author%></td>
-		<td><%= resource.tag_ids%></td>
+		<td><%= tagString%></td>
 		<% for document in resource.documents%>
 		<td><%= link_to "Descargar", document.file.url(:original, false)%></td>
 		<%end%>
 	</tr>
-<%end%>
+	<%end%>
 </table>
 <p><a href="/resource/index">Inicio</a></p>
 <p><a href="/resource/profile">Subir archivo</a></p>

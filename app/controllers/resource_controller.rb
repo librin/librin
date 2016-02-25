@@ -32,17 +32,18 @@ class ResourceController < ApplicationController
   end
 
   def search
+        @search = params[:search]
         @resources = Resource.search(params[:search],
         field_weights: {title: 20, tags: 17, description: 10, author: 5},
         match_mode: :boolean,
      )
      puts @resources
+     render 'index'
   end
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
-  def index
-          
-     @documents=Document.all
+  def index    
      @resources=Resource.all
+     
   end
   
   def file

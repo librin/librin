@@ -1,6 +1,10 @@
 <p><a href="/resource/profile">Subir archivo</a></p>
 
-<h3>Recursos Subidos</h3>
+<% if @search%>
+<h3>Resultados por "<%= @search%>"</h3>
+<%else%>
+<h3>Rescursos disponibles</h3>
+<%end%>
 
 <% for resource in @resources %>
 <div id="resources"></div>
