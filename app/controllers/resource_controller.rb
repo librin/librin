@@ -1,5 +1,13 @@
 class ResourceController < ApplicationController
  before_action :authenticate_user!
+ 
+  def profile
+     @resource = Resource.new
+  end
+   
+  def new
+     @resource = Resource.new
+  end
   
   def create
     @resource = current_user.resources.new(add_params)
@@ -12,20 +20,15 @@ class ResourceController < ApplicationController
       if params[:tags]
         tags=params[:tags].split(",")
         tags.each_index{|x| tags[x]=tags[x].strip}
-        tagsObjects = Tag.all
         tags.each {|tagS|
           newTag = Tag.find_or_initialize_by(:name =>tagS)
-          puts "el tag es:"
-          puts newTag
           @resource.tags<< newTag
         }
       end
+      index
+      render 'index'
     end
     
-  end
-  
-  def new
-    @resource = Resource.new
   end
 
   def search
@@ -35,8 +38,9 @@ class ResourceController < ApplicationController
      )
      puts @resources
   end
-
+#sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
   def index
+          
      @documents=Document.all
      @resources=Resource.all
   end
@@ -44,9 +48,8 @@ class ResourceController < ApplicationController
   def file
     id = params[:id]
    @resource = Resource.find id
-   @resources = Resource.all
-   @documents = Document.all
    @tags = Tag.all
+   puts @documents
   end
   
   def add_params

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'resource/search'
   post 'resource/search'
 
-  get 'resource/delete'
+  get 'resource/profile'
 
   get 'resource/index'
 

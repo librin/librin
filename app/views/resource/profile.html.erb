@@ -4,12 +4,13 @@
 	<li>Descripción departamento</li>
 	<li>Redes Sociales</li>
 </ul>
-<div>
+
+
 
 <div class = "upload" >
 <h2>Comparte recursos</h2>
 	<table>
-		<%= form_for @resource, html: { :multipart => true }, url: {action: "create"} do |f| %>
+		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
 		<tr>
 			<td><%= f.label :title, "Título"%><br></td>
 			<td><%= f.text_field :title %></td>	
@@ -40,3 +41,6 @@
 		<%end%>	
 	</table>
 </div>
+<p><a href="/resource/index">Inicio</a></p>
+
+
