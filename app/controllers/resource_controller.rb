@@ -2,6 +2,7 @@ class ResourceController < ApplicationController
  before_action :authenticate_user!
  
   def profile
+         @resource = Resource.new
   end
   
   # def loggedUser
@@ -51,10 +52,8 @@ class ResourceController < ApplicationController
   def file
     id = params[:id]
    @resource = Resource.find id
-
    @currentUser = User.find(current_user)
    @documents = Document.find id
-   #@userSharing = @documents
    @userSharing = @resource.user_id
    @tags = Tag.all
    puts @documents
