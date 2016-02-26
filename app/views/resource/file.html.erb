@@ -1,7 +1,6 @@
-
+<h3>Hola <%= @currentUser.email %></h3>
 
 <h1>Descarga tu libro</h1>
-<main>
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<div class = "titulo"><%= @resource.title %></div>
 	<div class = "autor"><%= @resource.author %></div>
@@ -10,9 +9,9 @@
 		<%end%>
 	<div class = "tags">
 			TAGS: <% @resource.tags.each{|tag| %>
-			<a href=/resource/search?search=<%=tag.id%>> <%=tag.name%></a>
+			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
 			<%}%>
 	</div>
 	<div class = "desc"><%= @resource.description %></div>
-</main>
+	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
 	

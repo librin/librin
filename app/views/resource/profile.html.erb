@@ -1,5 +1,4 @@
 
-<div class = "upload" >
 <h2>Comparte recursos</h2>
 	<table>
 		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
@@ -25,14 +24,13 @@
 		</tr>
 		<tr>
 			<td><%= f.label :files, "Archivos"%><br></td>
-			<td><%= file_field_tag "files[]", type: :file, multiple: true %></td>	
+			<td><%= f.file_field_tag "files[]", type: :file, multiple: true %></td>	
 		</tr>
  		<tr>
  			<td colspan="2"><%= f.submit "Comparte!" %></td>
  		</tr>
 		<%end%>	
 	</table>
-</div>
 
 
 

@@ -2,8 +2,11 @@ class ResourceController < ApplicationController
  before_action :authenticate_user!
  
   def profile
-     @resource = Resource.new
   end
+  
+  # def loggedUser
+       # @currentUser = User.find(current_user)
+  # end
    
   def new
      @resource = Resource.new
@@ -25,8 +28,8 @@ class ResourceController < ApplicationController
           @resource.tags<< newTag
         }
       end
-      index
-      render 'index'
+        index
+        render 'index'
     end
     
   end
@@ -43,12 +46,16 @@ class ResourceController < ApplicationController
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
   def index    
      @resources=Resource.all
-     
   end
   
   def file
     id = params[:id]
    @resource = Resource.find id
+
+   @currentUser = User.find(current_user)
+   @documents = Document.find id
+   #@userSharing = @documents
+   @userSharing = @resource.user_id
    @tags = Tag.all
    puts @documents
   end
