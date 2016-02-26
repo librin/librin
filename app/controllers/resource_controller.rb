@@ -48,13 +48,15 @@ class ResourceController < ApplicationController
     id = params[:id]
    @resource = Resource.find id
    @currentUser = User.find(current_user)
+   #no saco el nombre de quien aporta el recurso
    @userSharing = @resource.user_id
    @tags = Tag.all
    puts @documents
   end
     
   def delete
-    @delete = params[:title]
+    #no saco el título, solo el id borrado
+    @delete = params[:id]
     id = params[:id]
     Resource.delete id
     index
