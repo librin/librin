@@ -4,14 +4,10 @@ class ResourceController < ApplicationController
   def profile
          @resource = Resource.new
   end
-  
-  # def loggedUser
-       # @currentUser = User.find(current_user)
-  # end
    
   def new
      @resource = Resource.new
-  end
+  end 
   
   def create
     @resource = current_user.resources.new(add_params)
@@ -31,8 +27,7 @@ class ResourceController < ApplicationController
       end
         index
         render 'index'
-    end
-    
+    end  
   end
 
   def search
@@ -46,20 +41,28 @@ class ResourceController < ApplicationController
   end
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
   def index    
-     @resources=Resource.all
+     @resources = Resource.all
   end
   
   def file
     id = params[:id]
    @resource = Resource.find id
    @currentUser = User.find(current_user)
-   @documents = Document.find id
    @userSharing = @resource.user_id
    @tags = Tag.all
    puts @documents
   end
+    
+  def delete
+    @delete = params[:title]
+    id = params[:id]
+    Resource.delete id
+    index
+    render :index
+  end
+ 
   
   def add_params
-    params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
+    params.require(:resource).permit(:id, :title,:description,:author,:cover,:tags,:files=>[])
   end
 end

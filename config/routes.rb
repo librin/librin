@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'resource/index'
 
   get 'resource/file'
+  get 'resource/delete'
+
   
   get 'resource/profile'
   
