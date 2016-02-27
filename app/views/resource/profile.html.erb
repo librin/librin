@@ -1,3 +1,6 @@
+<%= javascript_tag do %>
+var tagsArray = <%=@tags.to_json.html_safe%>;
+<% end %>
 
 <h2>Comparte recursos</h2>
 	<table>
@@ -12,11 +15,11 @@
 		</tr>
 		<tr>
 			<td><%= f.label :description, "Descripción"%><br></td>
-			<td><%= f.text_field :description %></td>	
+			<td><%= f.text_area :description %></td>	
 		</tr>
 		<tr>
 			<td><%= f.label :tags, "Tags (separados por comas)"%><br></td>
-			<td><%= text_field_tag :tags%></td>	
+			<td><%= text_area_tag :tags%></td>	
 		</tr>
 		<tr>
 			<td><%= f.label :cover, "Portada"%><br></td>

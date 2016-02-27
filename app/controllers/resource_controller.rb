@@ -3,6 +3,10 @@ class ResourceController < ApplicationController
  
   def profile
          @resource = Resource.new
+         @tags = Tag.all
+         @tags= @tags.each_index {|x| 
+           @tags[x]=@tags[x].name
+           }
   end
   
   # def loggedUser
