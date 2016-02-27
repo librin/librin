@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'resource/file'
    
   get 'resource/download'
+
+  get 'resource/comment'
   
   devise_for :users
 root to: "resource#index"

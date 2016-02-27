@@ -58,6 +58,17 @@ class ResourceController < ApplicationController
    @currentUser = User.find(current_user)
    @userSharing = @resource.user_id
   end
+
+  def comment
+  	comment = params[:comment]
+  	commentHash = {}
+  	commentHash[:comment] = comment
+  	@comment = Comment.create(commentHash)
+  	@comments = Comment.all
+  	render 'file'
+
+  end
+
   
   def download
     document = Document.find params[:id].to_i
@@ -67,4 +78,5 @@ class ResourceController < ApplicationController
   def add_params
     params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
   end
+
 end
