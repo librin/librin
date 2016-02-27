@@ -11,10 +11,9 @@ Rails.application.routes.draw do
   get 'resource/index'
 
   get 'resource/file'
+   
+  get 'resource/download'
   
-  get 'resource/profile'
-  
-
   devise_for :users
 root to: "resource#index"
  # The priority is based upon order of creation: first created -> highest priority.

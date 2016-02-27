@@ -6,7 +6,7 @@ class ResourceController < ApplicationController
          @tags = Tag.all
          @tags= @tags.each_index {|x| 
            @tags[x]=@tags[x].name
-           }
+         }
   end
   
   # def loggedUser
@@ -45,7 +45,6 @@ class ResourceController < ApplicationController
         field_weights: {title: 20, tags: 17, description: 10, author: 5},
         match_mode: :boolean,
      )
-     puts @resources
      render 'index'
   end
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
@@ -54,13 +53,15 @@ class ResourceController < ApplicationController
   end
   
   def file
-    id = params[:id]
+   id = params[:id]
    @resource = Resource.find id
    @currentUser = User.find(current_user)
-   @documents = Document.find id
    @userSharing = @resource.user_id
-   @tags = Tag.all
-   puts @documents
+  end
+  
+  def download
+    document = Document.find params[:id].to_i
+    send_file document.file.path
   end
   
   def add_params

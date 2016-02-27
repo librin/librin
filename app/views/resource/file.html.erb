@@ -5,7 +5,7 @@
 	<div class = "titulo"><%= @resource.title %></div>
 	<div class = "autor"><%= @resource.author %></div>
 		<% for document in @resource.documents%>
-			<div class = "descargar"><%= link_to "Descarga archivo", document.file.url(:original, false)%></div>
+			<div class = "descargar"><a href="/resource/download?id=<%=document.id%>">Descagar</a></div>
 		<%end%>
 	<div class = "tags">
 			TAGS: <% @resource.tags.each{|tag| %>
