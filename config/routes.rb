@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'resource/file'
    
   get 'resource/download'
+
+  get 'comment/create'
   
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 root to: "resource#index"

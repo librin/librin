@@ -14,4 +14,21 @@
 	</div>
 	<div class = "desc"><%= @resource.description %></div>
 	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
+
+	<% 
+	for comment in @resource.comments %>
+		<div><%=comment.comment%></div>
+		<div>Comentado por <%= comment.user.email%></div>
+
+	<%end%>
+
+	<h2> -- Añade un comentario -- </h2>
+
+	<%= form_tag({controller:"comment",action:"create"},method:"get") do%>
+		<%= hidden_field_tag(:id,@resource.id)%>
+		<%= label_tag(:comment, "Comentario:")%><br />
+		<%= text_area_tag(:comment)%><br />
+		<%= submit_tag("Comenta!")%>
+	<% end %>
 	
+
