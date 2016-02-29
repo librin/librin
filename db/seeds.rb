@@ -1,6 +1,10 @@
-
+Group.create!([
+  {name: "grupo1"},
+  {name: "grupo2"}
+])
 User.create!([
-  {email:"test@test.com", password:'12345678'}
+  {email:"test@test.com", password:'12345678',userName:"Usuario1", group_id:1},
+  {email:"test2@test2.com", password:'12345678',userName:"Usuario2", group_id:2}
 ])
 
 Document.create!([
@@ -31,13 +35,13 @@ Resource.create!([
   {user_id: 1,title: "Programación en Internet, clientes web", author: "Sergio Luján Mora", description: "Programación en Internet, clientes web", views: nil, cover_file_name: "Sergio_Lujan_Mora._Progr_en_Internet.jpg", cover_content_type: "image/jpeg", cover_file_size: 41259, cover_updated_at: "2016-02-24 11:42:22"},
   {user_id: 1,title: "Tipos de Gemas RoR", author: "Anónimo", description: "Tipos de Gemas RoR", views: nil, cover_file_name: "gemaruby.jpg", cover_content_type: "image/jpeg", cover_file_size: 19252, cover_updated_at: "2016-02-24 11:45:35"},
   {user_id: 1,title: "Formularios JS", author: "Anónimo", description: "", views: nil, cover_file_name: "JS.jpg", cover_content_type: "image/jpeg", cover_file_size: 7136, cover_updated_at: "2016-02-24 11:46:58"},
-  {user_id: 1,title: "Guía Usuario Ruby", author: "Anónimo", description: "Guía Usuario Ruby", views: nil, cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 11:51:15"},
-  {user_id: 1,title: "Java Trail", author: "Anónimo", description: "Java", views: nil, cover_file_name: "java.jpg", cover_content_type: "image/jpeg", cover_file_size: 109236, cover_updated_at: "2016-02-24 11:52:34"},
-  {user_id: 1,title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
-  {user_id: 1,title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
-  {user_id: 1,title: "Ruby on Rails Deusto", author: "Deusto", description: "Deusto Ruby On Rails", views: nil, cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 12:08:13"},
-  {user_id: 1,title: "Devise Course", author: "Anónimo", description: "Course Devise Gem", views: nil, cover_file_name: "devise.jpg", cover_content_type: "image/jpeg", cover_file_size: 4144, cover_updated_at: "2016-02-24 12:09:43"},
-  {user_id: 1,title: "Networking Trail", author: "The King", description: "Networking Trail", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil}
+  {user_id: 2,title: "Guía Usuario Ruby", author: "Anónimo", description: "Guía Usuario Ruby", views: nil, cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 11:51:15"},
+  {user_id: 2,title: "Java Trail", author: "Anónimo", description: "Java", views: nil, cover_file_name: "java.jpg", cover_content_type: "image/jpeg", cover_file_size: 109236, cover_updated_at: "2016-02-24 11:52:34"},
+  {user_id: 2,title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
+  {user_id: 2,title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
+  {user_id: 2,title: "Ruby on Rails Deusto", author: "Deusto", description: "Deusto Ruby On Rails", views: nil, cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 12:08:13"},
+  {user_id: 2,title: "Devise Course", author: "Anónimo", description: "Course Devise Gem", views: nil, cover_file_name: "devise.jpg", cover_content_type: "image/jpeg", cover_file_size: 4144, cover_updated_at: "2016-02-24 12:09:43"},
+  {user_id: 2,title: "Networking Trail", author: "The King", description: "Networking Trail", views: nil, cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil}
 ])
 Resource::HABTM_Tags.create!([
   {resource_id: 1, tag_id: 1},

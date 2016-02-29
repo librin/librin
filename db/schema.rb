@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227124106) do
+ActiveRecord::Schema.define(version: 20160229094603) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "comment",     limit: 255
@@ -36,12 +36,21 @@ ActiveRecord::Schema.define(version: 20160227124106) do
 
   add_index "documents", ["resource_id"], name: "index_documents_on_resource_id", using: :btree
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "admin",       limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string   "title",              limit: 255
     t.string   "author",             limit: 255
     t.text     "description",        limit: 65535
     t.integer  "views",              limit: 4
     t.integer  "user_id",            limit: 4
+    t.integer  "group_id",           limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "cover_file_name",    limit: 255
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160227124106) do
     t.string   "github",                 limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "group_id",               limit: 4
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
@@ -87,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160227124106) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -48,8 +48,8 @@ class ResourceController < ApplicationController
      render 'index'
   end
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
-  def index    
-     @resources=Resource.all
+  def index
+     @resources=current_user.group.resources
   end
   
   def file
