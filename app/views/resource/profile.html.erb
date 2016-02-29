@@ -3,6 +3,7 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
 <% end %>
 
 <h2>Comparte recursos</h2>
+<hr />
 	<table>
 		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
 		<tr>

@@ -1,6 +1,7 @@
 <h3>Hola <%= @currentUser.email %></h3>
 
 <h1>Descarga tu libro</h1>
+<hr />
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<div class = "titulo"><%= @resource.title %></div>
 	<div class = "autor"><%= @resource.author %></div>
