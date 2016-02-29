@@ -20,8 +20,8 @@
 	<% 
 	for comment in @resource.comments %>
 		<div><%=comment.comment%></div>
-		<div>Comentado por <%= comment.user.email%></div>
-
+		<div>Comentado por <%= comment.user.email%> </div>
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%></div>
 	<%end%>
 
 	<h2> -- Añade un comentario -- </h2>
