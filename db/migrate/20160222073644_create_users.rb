@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :github
 
       t.timestamps null: false
+      t.belongs_to :group, index:true
     end
   end
 end

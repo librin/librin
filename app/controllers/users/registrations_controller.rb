@@ -8,9 +8,17 @@ before_filter :configure_sign_up_params, only: [:create]
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+     super
+     if resource.save
+	group = Group.find_or_initialize_by(:name =>resource.email.partition('@').last)
+	if group.users.empty?
+	  group.admin=resource.id
+	end
+        resource.group = group
+        resource.save
+     end
+  end
 
   # GET /resource/edit
   # def edit
