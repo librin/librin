@@ -11,12 +11,13 @@ before_filter :configure_sign_up_params, only: [:create]
   def create
      super
      if resource.save
-     	group = resource.email.partition('@').last
-	group = Group.find_or_initialize_by(:name =>group)
+	group = Group.find_or_initialize_by(:name =>resource.email.partition('@').last)
+	if group.users.empty?
+	  group.admin=resource.id
+	end
         resource.group = group
         resource.save
-         puts resource.group
-	end
+     end
   end
 
   # GET /resource/edit

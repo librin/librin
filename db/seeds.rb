@@ -1,9 +1,11 @@
 Group.create!([
-  {name: "grupo1"},
-  {name: "grupo2"}
+  {name: "test.com", description: "Grupo de testeo nº1", admin: 1},
+  {name: "test2.com", description: "Grupo de testeo nº2", admin: 2}
 ])
 User.create!([
   {email:"test@test.com", password:'12345678',userName:"Usuario1", group_id:1},
+  {email:"test@test2.com", password:'12345678',userName:"Usuario2", group_id:2},
+  {email:"test2@test.com", password:'12345678',userName:"Usuario1", group_id:1},
   {email:"test2@test2.com", password:'12345678',userName:"Usuario2", group_id:2}
 ])
 
