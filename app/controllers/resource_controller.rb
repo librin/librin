@@ -48,9 +48,9 @@ class ResourceController < ApplicationController
      render 'index'
   end
 #sacamos la búsqueda para que aparezcan 9 por página y en orden descendente de creación No lo he comprobado
-  def index    
-     @resources=Resource.all
-  end
+   def index    
+     @resources = Resource.paginate(:page => params[:page], :per_page => 8)
+   end
   
   def file
    id = params[:id]
