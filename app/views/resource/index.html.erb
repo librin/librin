@@ -1,8 +1,8 @@
-
-
-<% if @search%>
+<% if @search %>
 <h3>Resultados por "<%= @search%>"</h3>
-<%else%>
+<%elsif @delete %>
+<h3>El documento "<%= @title%>" ha sido borrado</h3>
+<%elsif%>
 <h3>Rescursos disponibles</h3>
 <%end%>
 

@@ -14,7 +14,9 @@
 	</div>
 	<div class = "desc"><%= @resource.description %></div>
 	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
-
+	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a>
+		
+		
 	<% 
 	for comment in @resource.comments %>
 		<div><%=comment.comment%></div>

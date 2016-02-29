@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'resource/file'
    
   get 'resource/download'
-
+  get 'resource/delete'
   get 'comment/create'
   
   devise_for :users, :controllers => { :registrations => "users/registrations" }
