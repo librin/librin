@@ -59,16 +59,6 @@ class ResourceController < ApplicationController
    @userSharing = @resource.user_id
   end
 
-  def comment
-  	comment = params[:comment]
-  	commentHash = {}
-  	commentHash[:comment] = comment
-  	@comment = Comment.create(commentHash)
-  	@comments = Comment.all
-  	render 'file'
-
-  end
-
   
   def download
     document = Document.find params[:id].to_i

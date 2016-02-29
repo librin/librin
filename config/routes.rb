@@ -14,7 +14,7 @@ Rails.application.routes.draw do
    
   get 'resource/download'
 
-  get 'resource/comment'
+  get 'comment/create'
   
   devise_for :users
 root to: "resource#index"
