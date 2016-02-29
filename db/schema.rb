@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229094603) do
+ActiveRecord::Schema.define(version: 20160229192045) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "comment",     limit: 255
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160229094603) do
     t.datetime "cover_updated_at"
   end
 
+  add_index "resources", ["group_id"], name: "index_resources_on_group_id", using: :btree
   add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
 
   create_table "resources_tags", id: false, force: :cascade do |t|
@@ -99,5 +100,16 @@ ActiveRecord::Schema.define(version: 20160229094603) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "value",       limit: 4
+    t.integer  "user_id",     limit: 4
+    t.integer  "resource_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "votes", ["resource_id"], name: "index_votes_on_resource_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
