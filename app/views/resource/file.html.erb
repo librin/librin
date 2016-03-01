@@ -33,4 +33,36 @@
 		<%= submit_tag("Comenta!")%>
 	<% end %>
 	
+<h2>Recomienda este recurso</h2>
+
+<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
+
+	<%= label_tag(:userName, "Nombre Usuario")%>
+	<%= text_field_tag(:userName)%><br>
+	<%= hidden_field_tag(:id, @resource.id)%>
+	
+	<%= submit_tag "Enviar"%><br>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

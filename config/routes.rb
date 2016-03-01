@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'librin_mail/suggestion'
+
   post 'resource/create'
 
   get 'resource/create'
