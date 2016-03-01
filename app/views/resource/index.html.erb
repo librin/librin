@@ -1,22 +1,32 @@
 <% if @search %>
 <h3>Resultados por "<%= @search%>"</h3>
+
 <%elsif @delete %>
 <h3>El documento "<%= @title%>" ha sido borrado</h3>
 <%elsif%>
-<h3>Rescursos disponibles</h3>
+
+
+<h1>Recursos disponibles</h1>
+
 <%end%>
 
-<p><%= will_paginate @resources %></p>
+<hr />
+
+
 
 <% for resource in @resources %>
 <div id="resources"></div>
 <a href ="/resource/file?id=<%=resource.id%>">
 	<div class="resource">
 	<%= hidden_field_tag(:id)%>
-	<%= image_tag resource.cover.url(:thumb)%><br />
+	<span><%= image_tag resource.cover.url(:thumb)%></span><br />
 	<span><%= resource.title %></span><br />
 	<span><%= resource.author %></span><br />		
 </div> </a>
 <% end %>
-<br /><br /><br />
+
+<div class="pagination"><%= will_paginate @resources %></div>
+
+<hr />
+
 

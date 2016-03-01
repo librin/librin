@@ -14,7 +14,7 @@
 	</div>
 	<div class = "desc"><%= @resource.description %></div>
 	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
-	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a>
+	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a></div>
 		
 		
 	<% 
@@ -24,13 +24,13 @@
 		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%></div>
 	<%end%>
 
-	<h2> -- Añade un comentario -- </h2>
 
-	<%= form_tag({controller:"comment",action:"create"},method:"get") do%>
+	<h2>Añade un comentario</h2>
+	<p><%= form_tag({controller:"comment",action:"create"},method:"get") do%>
 		<%= hidden_field_tag(:id,@resource.id)%>
-		<%= label_tag(:comment, "Comentario:")%><br />
-		<%= text_area_tag(:comment)%><br />
-		<%= submit_tag("Comenta!")%>
+		<%= label_tag(:comment, "Comentario:")%></p>
+		<p><%= text_area_tag(:comment)%></p>
+		<p><%= submit_tag("Comenta!")%></p>
 	<% end %>
 	
 <h2>Recomienda este recurso</h2>
@@ -43,26 +43,6 @@
 	
 	<%= submit_tag "Enviar"%><br>
 <%end%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,39 +2,83 @@
 var tagsArray = <%=@tags.to_json.html_safe%>;
 <% end %>
 
-<h2>Comparte recursos</h2>
-	
-		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
-		<table>
-		<tr>
-			<td><%= f.label :title, "Título"%><br></td>
-			<td><%= f.text_field :title %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :author, "Autor"%><br></td>
-			<td><%= f.text_field :author %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :description, "Descripción"%><br></td>
-			<td><%= f.text_area :description %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :tags, "Tags (separados por comas)"%><br></td>
-			<td><%= text_area_tag :tags%></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :cover, "Portada"%><br></td>
-			<td><%= f.file_field :cover %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :files, "Archivos"%><br></td>
-			<td><%= file_field_tag "files[]", type: :file, multiple: true %></td>	
-		</tr>
- 		<tr>
- 			<td colspan="2"><%= f.submit "Comparte!" %></td>
- 		</tr>
- 	</table>
+
+
+		<h1><span class="fontawesome-lock"></span>Comparte un recurso</h1>
+
+
+
+<div class="form-general">
+<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f| %>
+  <fieldset>
+    <legend>Recurso</legend>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :title, "Título"%></label>
+      <div class="col-lg-10">
+      	<%= f.text_field :title, class:"form-control", id:"inputEmail", placeholder:"Título"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :author, "Autor"%></label>
+      <div class="col-lg-10">
+      	<%= f.text_field :author, class:"form-control", id:"inputEmail", placeholder:"Autor"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label"><%= f.label :description, "Descripción"%></label>
+      <div class="col-lg-10">
+        <%= f.text_area :description, class:"form-control", id:"textArea" %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label"><%= f.label :description, "Descripción"%></label>
+      <div class="col-lg-10">
+        <%= f.text_area :description, class:"form-control", id:"textArea" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+
+<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f| %>
+		
+	<div id="login">
+
+			<fieldset>
+
+				<p><%= f.label :title, "Título"%></p>
+				<p><%= f.text_field :title %></p>
+
+				<p><%= f.label :author, "Autor"%></p>
+				<p><%= f.text_field :author %></p>
+
+				<p><%= f.label :description, "Descripción"%></p>
+				<p><%= f.text_area :description %></p>
+
+				<p><%= f.label :tags, "Tags (separados por comas)"%></p>
+				<p><%= text_area_tag :tags%></p>
+
+				<p><%= f.label :cover, "Portada"%></p>
+				<p><%= f.file_field :cover %></p>
+
+				<p><%= f.label :files, "Archivos"%></p>
+				<p><%= file_field_tag "files[]", type: :file, multiple: true %></p>
+
+				<p><%= f.submit "Comparte!" %></p>
+
+			</fieldset>
+
 		<%end%>	
-
-
-
+	</div> 

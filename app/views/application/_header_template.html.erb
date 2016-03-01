@@ -1,24 +1,52 @@
-<div class="nav">  	 	
-      <ul>
-      	<li><a href="/resource/index"><%= image_tag("header_librin.png")%></a></li>
-        <!--<li class="ranking"><a href="#">Ranking</a></li>-->
-        <li class="create"><a href="/resource/profile">Subir</a></li>
-        <li class="profile"><a href="/resource/profile">Perfil</a></li>
 
-        
-		<%if user_signed_in? %>
-			<li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-		<%end%>
-		<li>
-		<%if user_signed_in? %>
-			<%= form_tag('/resource/search', method: "get") do%>
-			<%= text_field_tag :search, params[:search]%>
-			<%= submit_tag(value="Buscar")%>
-		<%end%>
-		<%end%>
-		</li>
-		 
-		
-	  </ul>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/resource/index"><%= image_tag("header_librin.png", style:"
+    width: 40px;")%></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/resource/profile">Subir<span class="sr-only">(current)</span></a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ranking <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <%if user_signed_in? %>
+      <%= form_tag('/resource/search', method: "get", class: 'navbar-form navbar-left') do%>
+        <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Busca'%>
+        </div>
+        <%= submit_tag(value="Buscar", class: 'btn btn-default')%>
+      <%end%>
+      <%end%>
+
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <%if user_signed_in? %>
+        <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+        <%end%></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
