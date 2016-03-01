@@ -45,8 +45,7 @@ class ResourceController < ApplicationController
   def file
    id = params[:id]
    @resource = Resource.find id
-   @currentUser = User.find(current_user)
-   @userSharing = @resource.user_id
+   @currentUser = current_user
    voted = @resource.votes.where(:user_id => current_user.id)
    if voted.empty?
      @canVote=true
