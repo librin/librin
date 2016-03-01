@@ -20,13 +20,15 @@
 	<div class="resource">
 	<%= hidden_field_tag(:id)%>
 	<span><%= image_tag resource.cover.url(:thumb)%></span><br />
-	<span><%= resource.title %></span><br />
-	<span><%= resource.author %></span><br />		
+	<h2 class="small"><%= resource.title %></h2>
+	<h3 class="small"><%= resource.author %></h3><br />		
 </div> </a>
 <% end %>
 
 <div class="pagination"><%= will_paginate @resources %></div>
 
 <hr />
+
+
 
 
