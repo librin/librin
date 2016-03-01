@@ -1,11 +1,18 @@
-
-
-<% if @search%>
+<% if @search %>
 <h3>Resultados por "<%= @search%>"</h3>
-<%else%>
-<h1>Rescursos disponibles</h1>
-<hr />
+
+<%elsif @delete %>
+<h3>El documento "<%= @title%>" ha sido borrado</h3>
+<%elsif%>
+
+
+<h1>Recursos disponibles</h1>
+
 <%end%>
+
+<hr />
+
+
 
 <% for resource in @resources %>
 <div id="resources"></div>
@@ -17,6 +24,8 @@
 	<span><%= resource.author %></span><br />		
 </div> </a>
 <% end %>
+
+<div class="pagination"><%= will_paginate @resources %></div>
 
 <hr />
 

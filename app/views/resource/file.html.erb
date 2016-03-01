@@ -1,40 +1,28 @@
 <h3>Hola <%= @currentUser.email %></h3>
 
-		<div id="login">
-
-		<h2><span class="fontawesome-lock"></span>Descarga tu recurso</h2>
-
-
-			<fieldset>
-
-				<p style="padding-left: 18px;"><%= image_tag @resource.cover.url(:medium)%></p>
-				<p>TÍTULO: <%= @resource.title %></p>
-				<p>AUTOR: <%= @resource.author %></p>
-				<p><% for document in @resource.documents%>
-				<a href="/resource/download?id=<%=document.id%>">DESCARGAR</a>
-				<%end%></p>
-
-				<p>TAGS: <% @resource.tags.each{|tag| %>
-				<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
-				<%}%></p>
-
-				<p>DESCRIPCIÓN: <%= @resource.description %></p>
-
-				<p>Compartido, amablemente por... <%= @userSharing %></p>
-
-			</fieldset>
-		</div> 
-	
-	<div id="comment">
-		<h2><span class="fontawesome-lock"></span>Comentarios del recurso</h2>
-			<div class="fontawesome-lock">
-				<fieldset>
-					<p><% 
-						for comment in @resource.comments %>
-						<%=comment.comment%></p>
-						<p>Comentado por <%= comment.user.email%></p>
-						<%end%>
-				</fieldset>
+<h1>Descarga tu libro</h1>
+	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
+	<div class = "titulo"><%= @resource.title %></div>
+	<div class = "autor"><%= @resource.author %></div>
+		<% for document in @resource.documents%>
+			<div class = "descargar"><a href="/resource/download?id=<%=document.id%>">Descagar</a></div>
+		<%end%>
+	<div class = "tags">
+			TAGS: <% @resource.tags.each{|tag| %>
+			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
+			<%}%>
+	</div>
+	<div class = "desc"><%= @resource.description %></div>
+	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
+	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a>
+		
+		
+	<% 
+	for comment in @resource.comments %>
+		<div><%=comment.comment%></div>
+		<div>Comentado por <%= comment.user.email%> </div>
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%></div>
+	<%end%>
 
 
 	<h2>Añade un comentario</h2>

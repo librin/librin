@@ -2,11 +2,59 @@
 var tagsArray = <%=@tags.to_json.html_safe%>;
 <% end %>
 
+
+
+		<h1><span class="fontawesome-lock"></span>Comparte un recurso</h1>
+
+
+
+<div class="form-general">
+<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f| %>
+  <fieldset>
+    <legend>Recurso</legend>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :title, "Título"%></label>
+      <div class="col-lg-10">
+      	<%= f.text_field :title, class:"form-control", id:"inputEmail", placeholder:"Título"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :author, "Autor"%></label>
+      <div class="col-lg-10">
+      	<%= f.text_field :author, class:"form-control", id:"inputEmail", placeholder:"Autor"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label"><%= f.label :description, "Descripción"%></label>
+      <div class="col-lg-10">
+        <%= f.text_area :description, class:"form-control", id:"textArea" %>
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label"><%= f.label :description, "Descripción"%></label>
+      <div class="col-lg-10">
+        <%= f.text_area :description, class:"form-control", id:"textArea" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+
+<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f| %>
+		
 	<div id="login">
-
-		<h2><span class="fontawesome-lock"></span>Comparte un recurso</h2>
-
-		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
 
 			<fieldset>
 
