@@ -1,0 +1,44 @@
+<h2>Editar recurso</h2>
+		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "update"} do |f| %>
+		<!-- Float con la img en un div-->
+	<table>
+		<tr>
+			<td><%= hidden_field_tag :id, @resource.id%></td>
+		</tr>
+		<tr>
+			<td>
+			<%= image_tag @resource.cover.url(:medium) %>
+			</td>
+		</tr>
+		<tr>
+			<td><%= f.label :cover, "Nueva portada"%><br></td>
+			<td><%= f.file_field :cover %></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :title, "Título"%><br></td>
+			<td><%= f.text_field :title, :value => @resource.title%></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :author, "Autor"%><br></td>
+			<td><%= f.text_field :author, :value => @resource.author%></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :description, "Descripción"%><br></td>
+			<td><%= f.text_area :description, :value => @resource.description%></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :tags, "Tags "%><br></td>
+			<td><%= f.text_field :tags, :value => @listTags.join(',')%></td>	
+		</tr>
+		<tr>
+			<td><%= f.label :files, "Archivos"%><br></td>
+			<td><%= file_field_tag "files[]", type: :file, multiple: true%></td>	
+		</tr>
+ 		<tr>
+
+ 		<tr>
+ 			<td colspan="2"><%= f.submit "Edita!" %></td>
+ 		</tr>
+ 	</table>
+
+		<%end%>	

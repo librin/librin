@@ -71,35 +71,58 @@ class ResourceController < ApplicationController
   end
  
   
-  def show_update
+    def show_update
     @resource = Resource.find(params[:id])
     tags = @resource.tags
     @listTags = []
     tags.each_index{|x|
-                @listTags[x] = tags[x].name
-                }
+                @listTags[x] = tags[x].name} 
+    #@document = Resource.Document.file.url
+    puts tags
   end
   
   def update
+     # @resource = Resource.find(params[:id])
+     # hash = {}
+     # hash[:title]= params[@resource.title]
+     # hash[:author]= params[@resource.author]
+     # hash[:description]= params[@resource.description]
+     hashResources = params.require(:resource).permit(:id,:title,:description,:author,:files=>[])
+     tagsXComas = params.require(:resource).permit(:tags)
+     
      @resource = Resource.find(params[:id])
-     @resource.update_attributes(add_params)
-     if @resource.save
-       if params[:tags]
-          tags=params[:tags].split(",")
-          tags.each_index{|x| tags[x]=tags[x].strip}
-          tags.each {|tagS|
-            newTag = Tag.find_or_initialize_by(:name =>tagS)
-            @resource.tags<< newTag
-          }
-       end
-     end
-    render 'file'
-  end
+     hashResources[:tags] = []
+     @resource.update_attributes(hashResources)
+     # @resource.tags = []
+     # @resource.save
+     arrayTags=tagsXComas[:tags].split(",")
+     arrayTags.each_index{|x| arrayTags[x]=arrayTags[x].strip}
+     arrayTags.each {|tagS|
+        newTag = Tag.find_or_initialize_by(:name =>tagS)
+        @resource.tags<< newTag
+     }
+       
+     # @resource.update_attributes(hash)
+     # if @resource.save
+       # if params[:tags]
+          # tags=params[:tags].split(",")
+          # tags.each_index{|x| tags[x]=tags[x].strip}
+          # tags.each {|tagS|
+            # newTag = Tag.find_or_initialize_by(:name =>tagS)
+            # @resource.tags<< newTag
+          # }
   
-  private
 
   def add_params
     params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
-  end
+  
+ end
+end
 
 end
+
+
+
+
+
+
