@@ -35,12 +35,23 @@
 	<% end %>
 	
 		<h2> -- Vota este recurso -- </h2>
+<% if @canVote==true %>
+  <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
+    <fieldset class="rating">
+    <legend>Please rate:</legend>
+      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
+      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
+      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh"></label>
+      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad"></label>
+      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time"></label>
+    </fieldset>
+  <%= hidden_field_tag(:id,@resource.id)%>
+  <%= submit_tag("Vota!")%>
+  <% end %>
+<%else%>
+<div>Ya has votado este recurso</div>
+<%end%>
 
-	<%= form_tag({controller:"vote",action:"create"},method:"get") do%>
-		<%= hidden_field_tag(:id,@resource.id)%>
-		<%= label_tag(:value, "Voto:")%><br />
-		<%= select_tag(:value, options_for_select([1,2,3,4,5]))%><br />
-		<%= submit_tag("Vota!")%>
-	<% end %>
+
 
 

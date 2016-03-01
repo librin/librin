@@ -2,11 +2,11 @@ class ResourceController < ApplicationController
  before_action :authenticate_user!
  
   def profile
-         @resource = Resource.new
-         @tags = Tag.all
-         @tags= @tags.each_index {|x| 
+  	@tags = Tag.all
+         @tags= @tags.each_index {|x|
            @tags[x]=@tags[x].name
          }
+         @resource = Resource.new
   end
 
   def create
@@ -47,6 +47,12 @@ class ResourceController < ApplicationController
    @resource = Resource.find id
    @currentUser = User.find(current_user)
    @userSharing = @resource.user_id
+   voted = @resource.votes.where(:user_id => current_user.id)
+   if voted.empty?
+     @canVote=true
+   else
+     @canVote=false
+   end
   end
 
   
