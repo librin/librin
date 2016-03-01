@@ -6,6 +6,8 @@
 <h3>Rescursos disponibles</h3>
 <%end%>
 
+<p><%= will_paginate @resources %></p>
+
 <% for resource in @resources %>
 <div id="resources"></div>
 <a href ="/resource/file?id=<%=resource.id%>">
@@ -18,4 +20,3 @@
 <% end %>
 <br /><br /><br />
 
-<p><%= will_paginate @resources %></p>
