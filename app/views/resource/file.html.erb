@@ -1,8 +1,10 @@
 <h3>Hola <%= @currentUser.email %></h3>
 
 <h1>Descarga tu libro</h1>
+	<div class="fichero">
+	
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
-	<div class = "titulo"><%= @resource.title %></div>
+	<h3><%= @resource.title %></h3>
 	<div class = "autor"><%= @resource.author %></div>
 		<% for document in @resource.documents%>
 			<div class = "descargar"><a href="/resource/download?id=<%=document.id%>">Descagar</a></div>
@@ -16,8 +18,10 @@
 	<div class = "votes">Valoración media: <%= @resource.get_votes %></div>
 	<div class = "user">Compartido, amablemente por... <%= @resource.user.userName %></div>
 	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a></div>
-		
-		
+	
+	
+	</div>	
+		</div>
 	<% 
 	for comment in @resource.comments %>
 		<div><%=comment.comment%></div>
@@ -33,8 +37,9 @@
 		<p><%= text_area_tag(:comment)%></p>
 		<p><%= submit_tag("Comenta!")%></p>
 	<% end %>
-
-<h2>Recomienda este recurso</h2>
+	
+<div class ="votacion">
+<h4>Recomienda este recurso</h4>
 
 <%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
 
@@ -46,11 +51,10 @@
 <%end%>
 
 
-		<h2> -- Vota este recurso -- </h2>
 <% if @canVote==true %>
   <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
     <fieldset class="rating">
-    <legend>Please rate:</legend>
+ 
       <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
       <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
       <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh"></label>
@@ -61,8 +65,8 @@
   <%= submit_tag("Vota!")%>
   <% end %>
 <%else%>
-<div>Ya has votado este recurso</div>
+<h4>Ya has votado este recurso</h4>
 <%end%>
 
-
+</div>>
 

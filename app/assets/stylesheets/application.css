@@ -7098,6 +7098,10 @@ input:focus,
     left:2px;
 }
 
+.fichero{
+	margin-left: 35%;
+}
+
   /* Options 2 - Float
   .nav li {
     float: left;
