@@ -2,39 +2,35 @@
 var tagsArray = <%=@tags.to_json.html_safe%>;
 <% end %>
 
-<h2>Comparte recursos</h2>
-<hr />
-	<table>
+	<div id="login">
+
+		<h2><span class="fontawesome-lock"></span>Comparte un recurso</h2>
+
 		<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create"} do |f| %>
-		<tr>
-			<td><%= f.label :title, "Título"%><br></td>
-			<td><%= f.text_field :title %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :author, "Autor"%><br></td>
-			<td><%= f.text_field :author %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :description, "Descripción"%><br></td>
-			<td><%= f.text_area :description %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :tags, "Tags (separados por comas)"%><br></td>
-			<td><%= text_area_tag :tags%></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :cover, "Portada"%><br></td>
-			<td><%= f.file_field :cover %></td>	
-		</tr>
-		<tr>
-			<td><%= f.label :files, "Archivos"%><br></td>
-			<td><%= file_field_tag "files[]", type: :file, multiple: true %></td>	
-		</tr>
- 		<tr>
- 			<td colspan="2"><%= f.submit "Comparte!" %></td>
- 		</tr>
+
+			<fieldset>
+
+				<p><%= f.label :title, "Título"%></p>
+				<p><%= f.text_field :title %></p>
+
+				<p><%= f.label :author, "Autor"%></p>
+				<p><%= f.text_field :author %></p>
+
+				<p><%= f.label :description, "Descripción"%></p>
+				<p><%= f.text_area :description %></p>
+
+				<p><%= f.label :tags, "Tags (separados por comas)"%></p>
+				<p><%= text_area_tag :tags%></p>
+
+				<p><%= f.label :cover, "Portada"%></p>
+				<p><%= f.file_field :cover %></p>
+
+				<p><%= f.label :files, "Archivos"%></p>
+				<p><%= file_field_tag "files[]", type: :file, multiple: true %></p>
+
+				<p><%= f.submit "Comparte!" %></p>
+
+			</fieldset>
+
 		<%end%>	
-	</table>
-
-
-
+	</div> 

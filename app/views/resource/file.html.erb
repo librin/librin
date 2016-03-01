@@ -1,18 +1,51 @@
 <h3>Hola <%= @currentUser.email %></h3>
 
-<h1>Descarga tu libro</h1>
-<hr />
-	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
-	<div class = "titulo"><%= @resource.title %></div>
-	<div class = "autor"><%= @resource.author %></div>
-		<% for document in @resource.documents%>
-			<div class = "descargar"><a href="/resource/download?id=<%=document.id%>">Descagar</a></div>
-		<%end%>
-	<div class = "tags">
-			TAGS: <% @resource.tags.each{|tag| %>
-			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
-			<%}%>
-	</div>
-	<div class = "desc"><%= @resource.description %></div>
-	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
+		<div id="login">
+
+		<h2><span class="fontawesome-lock"></span>Descarga tu recurso</h2>
+
+
+			<fieldset>
+
+				<p style="padding-left: 18px;"><%= image_tag @resource.cover.url(:medium)%></p>
+				<p>TÍTULO: <%= @resource.title %></p>
+				<p>AUTOR: <%= @resource.author %></p>
+				<p><% for document in @resource.documents%>
+				<a href="/resource/download?id=<%=document.id%>">DESCARGAR</a>
+				<%end%></p>
+
+				<p>TAGS: <% @resource.tags.each{|tag| %>
+				<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
+				<%}%></p>
+
+				<p>DESCRIPCIÓN: <%= @resource.description %></p>
+
+				<p>Compartido, amablemente por... <%= @userSharing %></p>
+
+			</fieldset>
+		</div> 
 	
+	<div id="comment">
+		<h2><span class="fontawesome-lock"></span>Comentarios del recurso</h2>
+			<div class="fontawesome-lock">
+				<fieldset>
+					<p><% 
+						for comment in @resource.comments %>
+						<%=comment.comment%></p>
+						<p>Comentado por <%= comment.user.email%></p>
+						<%end%>
+				</fieldset>
+
+
+	<h2>Añade un comentario</h2>
+	<p><%= form_tag({controller:"comment",action:"create"},method:"get") do%>
+		<%= hidden_field_tag(:id,@resource.id)%>
+		<%= label_tag(:comment, "Comentario:")%></p>
+		<p><%= text_area_tag(:comment)%></p>
+		<p><%= submit_tag("Comenta!")%></p>
+	<% end %>
+
+			</div>
+	</div>
+
+

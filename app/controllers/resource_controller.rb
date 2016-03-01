@@ -58,6 +58,7 @@ class ResourceController < ApplicationController
    @currentUser = User.find(current_user)
    @userSharing = @resource.user_id
   end
+
   
   def download
     document = Document.find params[:id].to_i
@@ -67,4 +68,5 @@ class ResourceController < ApplicationController
   def add_params
     params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
   end
+
 end
