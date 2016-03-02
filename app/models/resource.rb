@@ -9,6 +9,8 @@ class Resource < ActiveRecord::Base
   has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
 
   validates_attachment :cover, content_type: { content_type: /\Aimage\/.*\Z/ }
+  validates_presence_of :title, message: 'Es necesario incluir un título'
+
 
   def setAverage
       cont=0.0
