@@ -1,34 +1,32 @@
-<%= javascript_tag do %>
-var tagsArray = <%=@tags.to_json.html_safe%>;
-<% end %>
-		<h1><span class="fontawesome-lock"></span>Comparte un recurso</h1>
-
+<h1>Editar recurso</h1>
 <hr />
 
-
 <div class="form-general">
-<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f| %>
+<%= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "update"} do |f| %>
   <fieldset>
     <legend>Recurso</legend>
+		<%= hidden_field_tag :id, @resource.id%>
+
+    <div style="text-align: center;"><%= image_tag @resource.cover.url(:medium) %></div>
 
     <div class="form-group">
       <label class="col-lg-2 control-label"><%= f.label :title, "Título"%></label>
       <div class="col-lg-10">
-      	<%= f.text_field :title, class:"form-control", id:"inputEmail", placeholder:"Título"%>
+      	<%= f.text_field :title, class:"form-control", id:"inputEmail", :value => @resource.title %>
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-lg-2 control-label"><%= f.label :author, "Autor"%></label>
       <div class="col-lg-10">
-      	<%= f.text_field :author, class:"form-control", id:"inputEmail", placeholder:"Autor"%>
+      	<%= f.text_field :author, class:"form-control", id:"inputEmail", :value => @resource.author %>
       </div>
     </div>
 
     <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label"><%= f.label :description, "Descripción"%></label>
       <div class="col-lg-10">
-        <%= f.text_area :description, class:"form-control", id:"textArea" %>
+        <%= f.text_area :description, class:"form-control", id:"textArea", :value => @resource.description %>
       </div>
     </div>
 
@@ -49,14 +47,14 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
      <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label"><%= f.label :tags, "Tags (separados por comas)"%></label>
       <div class="col-lg-10">
-        <%= text_area_tag :tags%>
+      	<%= f.text_field :tags, :value => @listTags.join(',')%>
       </div>
     </div>
     
 	<hr />
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <%= f.submit "Comparte!", class:"btn btn-primary" %> 
+        <%= f.submit "Edita!", class:"btn btn-primary" %> 
       </div>
     </div>
   </fieldset>
@@ -64,5 +62,3 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
 </div>
 
 <hr />
-
-

@@ -1,39 +1,72 @@
-<h3>Hola <%= @currentUser.email %></h3>
 
-<h1>Descarga tu libro</h1>
+<h3>Hola <%= current_user.userName %></h3>
+
+
+<h3>Descarga tu libro</h3>
+
+<div class="fichero">
+	
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
-	<div class = "titulo"><%= @resource.title %></div>
-	<div class = "autor"><%= @resource.author %></div>
-		<% for document in @resource.documents%>
-			<div class = "descargar"><a href="/resource/download?id=<%=document.id%>">Descagar</a></div>
-		<%end%>
-	<div class = "tags">
-			TAGS: <% @resource.tags.each{|tag| %>
-			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
+	<h3><%= @resource.title %></h3>
+	<div class = "autor">AUTOR: <%= @resource.author %></div>
+	<div class = "desc"><p>DESCRIPCIÓN: <%= @resource.description %></p></div>
+	<div class = "user">Compartido, amablemente por... <%= @resource.user.userName %></div>
+	<div class = "tags"><% @resource.tags.each{|tag| %>
+			<a href=/resource/search?search=<%=tag.name%>, class="label label-info"> <%=tag.name%></a>
 			<%}%>
-	</div>
-	<div class = "desc"><%= @resource.description %></div>
-	<div class = "user">Compartido, amablemente por... <%= @userSharing %></div>
-	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a>
-		
-		
-	<% 
-	for comment in @resource.comments %>
-		<div><%=comment.comment%></div>
-		<div>Comentado por <%= comment.user.email%> </div>
-		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%></div>
+	</div><br>
+
+	<% for document in @resource.documents%>
+			<a href="/resource/download?id=<%=document.id%>", class="btn btn-primary">DESCARGAR</a>
 	<%end%>
-
-
-	<h2>Añade un comentario</h2>
-	<p><%= form_tag({controller:"comment",action:"create"},method:"get") do%>
-		<%= hidden_field_tag(:id,@resource.id)%>
-		<%= label_tag(:comment, "Comentario:")%></p>
-		<p><%= text_area_tag(:comment)%></p>
-		<p><%= submit_tag("Comenta!")%></p>
+	<% if @resource.editable(current_user) == true %>
+	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a></div>
+	<div class = "link"><a href="/resource/show_update?id=<%= @resource.id%>">EDITA</a></div>
 	<% end %>
+	
+</div>	
 
-			</div>
-	</div>
+<div class = "interact">
+		<h5>Introduce el nombre de usuario para recomendar este rescurso</h5>
+		<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
+			<%= text_field_tag(:userName)%>
+			<%= hidden_field_tag(:id, @resource.id)%>
+			<%= submit_tag "Envia recomendación", class: "btn btn-success"%><br>
+		<%end%>
+
+   <div>Valoración media: <%= @resource.get_votes %></div>
+	<% if @resource.votable(current_user) == true %>
+	  <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
+	    <fieldset class="rating">
+	      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
+	      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
+	      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh"></label>
+	      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad"></label>
+	      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time"></label>
+	    </fieldset>
+	  <%= hidden_field_tag(:id,@resource.id)%>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<%= submit_tag("Vota!", class: "btn btn-success")%>
+	  <% end %>
+	<%else%>
+			<h6 class="btn btn-info">Ya has votado este recurso</h6>
+	<%end%>
+</div>
 
 
+
+<div class ="comment">
+<br><br><br> 
+	<h4>Añade un comentario</h4>
+	    <%= form_tag({controller:"comment",action:"create"},method:"get") do%>
+		<%= hidden_field_tag(:id,@resource.id)%>
+		<%= text_area_tag :comment, "Comentarios", size: "80x3"%>
+		<%= submit_tag("Comenta!", class: "btn btn-success")%> 
+		<%end%>
+<br><br><br> 	
+		<% for comment in @resource.comments %>
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar, class: "avatare") %>&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
+			<br> <%= comment.user.email%> 
+		</div>
+	<%end%>
+</div> 
+<br><br><br> 
