@@ -24,4 +24,29 @@ class Resource < ActiveRecord::Base
       votes.round(1)
     end
   end
+
+  def editable(user)
+    if self.user_id == user.id || self.group.admin == user.id
+      true
+    else
+      false
+    end
+  end
+
+  def votable(user)
+   if self.votes.where(:user_id =>user.id).empty?
+     true
+   else
+     false
+   end
+  end
+
+  def addTags(tags)
+  	tags=tags.upcase.split(",")
+        tags.each_index{|x| tags[x]=tags[x].strip}
+        tags.each {|tagS|
+          newTag = Tag.find_or_initialize_by(:name =>tagS)
+          self.tags<< newTag
+        }
+  end
 end
