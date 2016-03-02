@@ -1,8 +1,9 @@
-<h2>Sign up</h2>
+<h1>Sign up</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <strong><%= devise_error_messages! %></strong>
 
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -44,3 +45,72 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+
+<h1>Sign Up</h1>
+
+<div class="form-general">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <strong><%= devise_error_messages! %></strong>
+  <fieldset>
+    <legend>Regístrate</legend>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :email %></label>
+      <div class="col-lg-10">
+         <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :password %></label>
+      <div class="col-lg-10">
+        <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputEmail" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label"><%= f.label :password_confirmation %></label>
+        <div class="col-lg-10">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputEmail"  %>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :userName, "Nombre de usuario" %></label>
+      <div class="col-lg-10">
+          <%= f.text_field :userName, class:"form-control", id:"inputEmail"  %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :firstName, "Nombre"%></label>
+      <div class="col-lg-10">
+          <%= f.text_field :firstName, class:"form-control", id:"inputEmail"  %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"><%= f.label :lastName, "Apellidos" %></label>
+      <div class="col-lg-10">
+          <%= f.text_field :lastName, class:"form-control", id:"inputEmail"  %>
+      </div>
+    </div>
+    
+  <hr />
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit "Sign Up!", class:"btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>
+<hr />
+
