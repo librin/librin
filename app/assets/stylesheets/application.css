@@ -7094,22 +7094,30 @@ input:focus,
     left:2px;
 }
 
-
-
-
 .gallery {
     height: 475px;
 }
-.fichero{
-	margin-left: 15%;
-	float: left;
-	width: 30%
 
+.form-general2{
+	padding: 1em 3em;
+	margin: 1em 25%;
+	width: 40%
+	
+	border-style: groove;
+	border: 2px groove #3e3f3a;
+	background-color: #E5E4E2;
+	border-radius: 24px 24px 24px 24px;
+	-moz-border-radius: 24px 24px 24px 24px;
+	-webkit-border-radius: 24px 24px 24px 24px;
+
+	margin-left: 10%;
+	float: left;
 }
 
 .interact{
+	clear: left;
 	float: right;
-	margin-right: 15%
+	margin-right: 5%
 }
 
 .comment{

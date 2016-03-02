@@ -1,10 +1,9 @@
+<h4>Hola <%= current_user.userName %></h4>
 
-<h3>Hola <%= current_user.userName %></h3>
 
+<h1>Descarga tu libro</h1><br>
 
-<h3>Descarga tu libro</h3>
-
-<div class="fichero">
+<div class="form-general2">
 	
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<h3><%= @resource.title %></h3>
@@ -20,8 +19,8 @@
 			<a href="/resource/download?id=<%=document.id%>", class="btn btn-primary">DESCARGAR</a>
 	<%end%>
 	<% if @resource.editable(current_user) == true %>
-	<div class = "link"><a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a></div>
-	<div class = "link"><a href="/resource/show_update?id=<%= @resource.id%>">EDITA</a></div>
+	<a href="/resource/delete?id=<%= @resource.id%>", class="btn btn-warning">BORRAR</a>
+	<a href="/resource/show_update?id=<%= @resource.id%>", class="btn btn-warning">EDITA</a>
 	<% end %>
 	
 </div>	
