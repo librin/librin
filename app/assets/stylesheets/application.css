@@ -7095,23 +7095,34 @@ input:focus,
 }
 
 
+
+
 .gallery {
     height: 475px;
 }
-
-  /* Options 2 - Float
-  .nav li {
-    float: left;
-  }
-  .nav ul {
-    overflow: auto;
-    width: 1100px;
-    margin: 0 auto;
-  }
-  .nav {
-    background-color: #BE873A;
-  }
+.fichero{
+	margin-left: 15%;
+	float: left;
+	width: 30%
 
 }
-*/
+
+.interact{
+	float: right;
+	margin-right: 15%
+}
+
+.comment{
+	clear: left;
+	margin-left: 15%;
+}
+
+.avatare{
+	border: 2px solid grey;
+	margin: 0;
+	padding: 0;
+	border-radius: 800px;
+	overflow: hidden;
+}
+
 
