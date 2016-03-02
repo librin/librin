@@ -1,8 +1,11 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
+  <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&close;</button>
+  <strong><%= devise_error_messages! %></strong>
+</div>
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>

@@ -13,7 +13,7 @@
 <hr />
 
 
-
+<div class="gallery">
 <% for resource in @resources %>
 <div id="resources"></div>
 <a href ="/resource/file?id=<%=resource.id%>">
@@ -23,9 +23,11 @@
 	<h2 class="small"><%= resource.title %></h2>
 	<h3 class="small"><%= resource.author %></h3><br />		
 </div> </a>
+
 <% end %>
 
 <div class="pagination"><%= will_paginate @resources %></div>
+</div>
 
 <hr />
 

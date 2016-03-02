@@ -1115,6 +1115,7 @@ body {
   line-height: 1.42857143;
   color: #3e3f3a;
   background-color: #ffffff;
+  height: 600px;
 }
 input,
 button,
@@ -7091,6 +7092,10 @@ input:focus,
     position:relative;
     top:2px;
     left:2px;
+}
+
+.gallery {
+    height: 475px;
 }
 
   /* Options 2 - Float
