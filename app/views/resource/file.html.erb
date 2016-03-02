@@ -7,7 +7,7 @@
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<h3><%= @resource.title %></h3>
 	<div class = "autor">AUTOR: <%= @resource.author %></div>
-	<div class = "desc">DESCRIPCIÓN: <%= @resource.description %></div>
+	<div class = "desc">DESCRIPCIÓN: <p><%= @resource.description %></p></div>
 	<div class = "tags">TAGS: <% @resource.tags.each{|tag| %>
 			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
 			<%}%>
@@ -22,20 +22,15 @@
 	
 </div>	
 
-<div class = "suggest">
-		<h4>Recomienda este recurso</h4>
+<div class = "interact">
+		<h5>Introduce el nombre de usuario para recomendar este rescurso</h5>
 		<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
-			<%= label_tag(:userName, "Nombre Usuario")%>
-			<%= text_field_tag(:userName)%><br>
+			<%= text_field_tag(:userName)%>
 			<%= hidden_field_tag(:id, @resource.id)%>
-			<%= submit_tag "Enviar"%><br>
+			<%= submit_tag "Enviar", class: "btn btn-success"%><br>
 		<%end%>
-</div>
 
-
-<div class ="voting">
-
-<div class = "votes">Valoración media: <%= @resource.get_votes %></div>
+   <div>Valoración media: <%= @resource.get_votes %></div>
 	<% if @canVote==true %>
 	  <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
 	    <fieldset class="rating">
@@ -46,27 +41,27 @@
 	      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time"></label>
 	    </fieldset>
 	  <%= hidden_field_tag(:id,@resource.id)%>
-	  <%= submit_tag("Vota!")%>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<%= submit_tag("Vota!", class: "btn btn-success")%>
 	  <% end %>
 	<%else%>
-<h6>Ya has votado este recurso</h6>
-<%end%>
-
-</div>
-
-</div>
-<div class ="comment">
-	<% for comment in @resource.comments %>
-		<div><%=comment.comment%></div>
-		<div>Comentado por <%= comment.user.email%> </div>
-		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%></div>
+			<h6 class="btn btn-info">Ya has votado este recurso</h6>
 	<%end%>
-
-	<h4>Añade un comentario</h4>
-	    <p><%= form_tag({controller:"comment",action:"create"},method:"get") do%>
-		<%= hidden_field_tag(:id,@resource.id)%>
-			<%= label_tag(:comment, "Comentario:")%></p>
-			<p><%= text_area_tag(:comment)%></p>
-		<p><%= submit_tag("Comenta!")%></p>
-	<% end %>
 </div>
+
+
+<div class ="comment">
+<br><br><br> 
+	<h4>Añade un comentario</h4>
+	    <%= form_tag({controller:"comment",action:"create"},method:"get") do%>
+		<%= hidden_field_tag(:id,@resource.id)%>
+		<%= text_area_tag :comment, "Comentarios", size: "80x2"%>
+		<%= submit_tag("Comenta!", class: "btn btn-success")%> 
+		<%end%>
+<br><br><br> 	
+		<% for comment in @resource.comments %>
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%>&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
+			<br> <%= comment.user.email%> 			
+		</div>
+	<%end%>
+</div> 
+<br><br><br> 

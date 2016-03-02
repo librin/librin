@@ -7099,8 +7099,20 @@ input:focus,
 }
 
 .fichero{
-	margin-left: 35%;
+	margin-left: 15%;
+	float: left;
 }
+
+.interact{
+	float: right;
+	margin-right: 20%
+}
+
+.comment{
+	clear: left;
+	margin-left: 15%;
+}
+
 
   /* Options 2 - Float
   .nav li {
