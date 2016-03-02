@@ -7,18 +7,18 @@
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<h3><%= @resource.title %></h3>
 	<div class = "autor">AUTOR: <%= @resource.author %></div>
-	<div class = "desc">DESCRIPCIÓN: <p><%= @resource.description %></p></div>
-	<div class = "tags">TAGS: <% @resource.tags.each{|tag| %>
-			<a href=/resource/search?search=<%=tag.name%>> <%=tag.name%></a>
-			<%}%>
-	</div>
+	<div class = "desc"><p>DESCRIPCIÓN: <%= @resource.description %></p></div>
 	<div class = "user">Compartido, amablemente por... <%= @resource.user.userName %></div>
+	<div class = "tags"><% @resource.tags.each{|tag| %>
+			<a href=/resource/search?search=<%=tag.name%>, class="label label-info"> <%=tag.name%></a>
+			<%}%>
+	</div><br>
 
 	<% for document in @resource.documents%>
-			<a href="/resource/download?id=<%=document.id%>">DESCARGAR</a>
+			<a href="/resource/download?id=<%=document.id%>", class="btn btn-primary">DESCARGAR</a>
 	<%end%>
-	<a href="/resource/delete?id=<%= @resource.id%>">BORRAR</a>
-	<a href="/resource/show_update?id=<%= @resource.id%>">EDITA</a>
+	<a href="/resource/delete?id=<%= @resource.id%>", class="btn btn-warning">BORRAR</a>
+	<a href="/resource/show_update?id=<%= @resource.id%>", class="btn btn-warning">EDITA</a>
 	
 </div>	
 
@@ -27,7 +27,7 @@
 		<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
 			<%= text_field_tag(:userName)%>
 			<%= hidden_field_tag(:id, @resource.id)%>
-			<%= submit_tag "Enviar", class: "btn btn-success"%><br>
+			<%= submit_tag "Envia recomendación", class: "btn btn-success"%><br>
 		<%end%>
 
    <div>Valoración media: <%= @resource.get_votes %></div>
@@ -54,13 +54,13 @@
 	<h4>Añade un comentario</h4>
 	    <%= form_tag({controller:"comment",action:"create"},method:"get") do%>
 		<%= hidden_field_tag(:id,@resource.id)%>
-		<%= text_area_tag :comment, "Comentarios", size: "80x2"%>
+		<%= text_area_tag :comment, "Comentarios", size: "80x3"%>
 		<%= submit_tag("Comenta!", class: "btn btn-success")%> 
 		<%end%>
 <br><br><br> 	
 		<% for comment in @resource.comments %>
-		<div class ="avatarComentario"><%= image_tag(comment.user.avatar)%>&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
-			<br> <%= comment.user.email%> 			
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar, class: "avatare") %>&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
+			<br> <%= comment.user.email%> 
 		</div>
 	<%end%>
 </div> 

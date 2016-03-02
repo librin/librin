@@ -7101,11 +7101,12 @@ input:focus,
 .fichero{
 	margin-left: 15%;
 	float: left;
+	width: 30%
 }
 
 .interact{
 	float: right;
-	margin-right: 20%
+	margin-right: 15%
 }
 
 .comment{
@@ -7113,7 +7114,13 @@ input:focus,
 	margin-left: 15%;
 }
 
-
+.avatare{
+	border: 2px solid grey;
+	margin: 0;
+	padding: 0;
+	border-radius: 800px;
+	overflow: hidden;
+}
   /* Options 2 - Float
   .nav li {
     float: left;
