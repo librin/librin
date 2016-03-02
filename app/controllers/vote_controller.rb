@@ -7,6 +7,7 @@ class VoteController < ApplicationController
 	  vote.resource=Resource.find params[:id]
 	  vote.user=current_user
 	  vote.save
+	  vote.resource.setAverage
 	end
     redirect_to :back
   end

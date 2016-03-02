@@ -11,6 +11,8 @@ class ResourceController < ApplicationController
 
   def create
     @resource = current_user.resources.new(add_params)
+    @resource.views = 0
+    @resource.average = 0
     if @resource.save
       if params[:files]
         params[:files].each { |file|
@@ -40,6 +42,8 @@ class ResourceController < ApplicationController
   def file
    id = params[:id]
    @resource = Resource.find id
+   @resource.views +=1
+   @resource.save
   end
 
   def download
@@ -54,8 +58,7 @@ class ResourceController < ApplicationController
       @title = resource.title
       Resource.delete id
       @delete = true
-      index
-      render :index
+      redirect_to root_path
     else
       redirect_to :back
     end
