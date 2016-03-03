@@ -18,8 +18,6 @@ default: &default
   socket: /var/run/mysqld/mysqld.sock
 
 
-
-
 development:
   <<: *default
   database: librin_development
