@@ -1,8 +1,7 @@
-class CreateComments < ActiveRecord::Migration
+class CreateVotes < ActiveRecord::Migration
   def change
-    create_table :comments do |t|
-      t.text :comment
-
+    create_table :votes do |t|
+      t.integer :value
       t.belongs_to :user, index:true
       t.belongs_to :resource, index:true
       t.timestamps null: false
