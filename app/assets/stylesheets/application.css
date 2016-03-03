@@ -7152,7 +7152,12 @@ input:focus,
 	border-color: #bfff80;
 }
 
-
+.ulfooter{
+ color: #E2E2E2;
+ list-style:none;
+ text-align: center;
+ font-weight: bold;
+}
 
 
 

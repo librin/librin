@@ -8,8 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/resource/index"><%= image_tag("header_librin.png", style:"
-    width: 40px;")%></a>
+      <a href="/resource/index"><%= image_tag("header_librin.png", style:"width: 60px; float:left;")%></a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,7 +38,10 @@
         <%= submit_tag(value="Buscar", class: 'btn btn-default')%>
       <%end%>
       <%end%>
+      
+      <div class ="avatarName" style="color: white;"><%= current_user.userName%></div>
 
+      <div class ="avatarHeader"><%= image_tag(current_user.avatar, class: "avatare") %></div>
 
 
       <ul class="nav navbar-nav navbar-right">
