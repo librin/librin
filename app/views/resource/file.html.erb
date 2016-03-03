@@ -26,16 +26,17 @@
 
 <div class = "interact" style="width:500px;">
 	  <div style="width:400px;">
-		<h5>Introduce el nombre de usuario para recomendar este recurso</h5>
-		<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
+		<h5 >Introduce el nombre de usuario para recomendar este recurso</h5>
+		<%= form_tag({controller:"librin_mail", action:"suggestion"}, remote: true,method:"get") do%>
 			<%= text_field_tag(:userName)%>
 			<%= hidden_field_tag(:id, @resource.id)%>
 			<%= submit_tag "Envia recomendación", class: "btn btn-success"%><br>
 		<%end%>
+		<h3 id="suggestion"></h3>
 
    <div>Valoración media: <%= @resource.average %></div>
 	<% if @resource.votable(current_user) == true %>
-	  <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
+	  <%= form_tag({controller:"vote",action:"create"}, method:"get") do%>
 	    <fieldset class="rating">
 	      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
 	      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
