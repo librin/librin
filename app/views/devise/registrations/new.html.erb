@@ -1,12 +1,14 @@
 <h1>Sign up</h1>
 
+<div class="form-general" style="width: 480px;">
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <strong><%= devise_error_messages! %></strong>
 
   
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail" %>
   </div>
 
   <div class="field">
@@ -14,37 +16,38 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputEmail" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputEmail" %>
   </div>
   
     <div class="field">
     <%= f.label :userName, "Nombre de usuario" %><br />
-    <%= f.text_field :userName %>
+    <%= f.text_field :userName, class:"form-control", id:"inputEmail" %>
   	</div>
   
   <div class="field">
     <%= f.label :firstName, "Nombre"%><br />
-    <%= f.text_field :firstName %>
+    <%= f.text_field :firstName, class:"form-control", id:"inputEmail" %>
   </div>
   
   <div class="field">
     <%= f.label :lastName, "Apellidos" %><br />
-    <%= f.text_field :lastName %>
+    <%= f.text_field :lastName, class:"form-control", id:"inputEmail" %>
   </div>
   
-  
+ <hr />
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"btn btn-primary"  %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+<<<<<<< HEAD
 
 
 
@@ -113,4 +116,7 @@
 </div>
 <%= render "devise/shared/links" %>
 <hr />
+
+
+</div>
 

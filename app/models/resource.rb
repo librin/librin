@@ -9,20 +9,20 @@ class Resource < ActiveRecord::Base
   has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
 
   validates_attachment :cover, content_type: { content_type: /\Aimage\/.*\Z/ }
+  validates_presence_of :title, message: 'Es necesario incluir un título'
 
-  def get_votes
-    if self.votes.empty?
-      return "No ha sido votado todavía"
-    else
+
+  def setAverage
       cont=0.0
-      votes=0
+      average=0
       self.votes.each {|vote|
-        votes=votes +vote.value
+        average=average +vote.value
         cont+=1
       }
-      votes=votes/cont
-      votes.round(1)
-    end
+      average=average/cont
+      average.round(1)
+      self.average= average
+      self.save
   end
 
   def editable(user)
@@ -42,7 +42,8 @@ class Resource < ActiveRecord::Base
   end
 
   def addTags(tags)
-  	tags=tags.upcase.split(",")
+  	tags=tags.upcase.strip.split(",")
+  	tags.reject(&:empty?)
         tags.each_index{|x| tags[x]=tags[x].strip}
         tags.each {|tagS|
           newTag = Tag.find_or_initialize_by(:name =>tagS)

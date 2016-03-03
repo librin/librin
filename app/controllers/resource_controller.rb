@@ -11,6 +11,8 @@ class ResourceController < ApplicationController
 
   def create
     @resource = current_user.resources.new(add_params)
+    @resource.views = 0
+    @resource.average = 0
     if @resource.save
       if params[:files]
         params[:files].each { |file|
@@ -22,12 +24,14 @@ class ResourceController < ApplicationController
       end
       redirect_to root_path
     end
+    redirect_to :back, notice: @resource.errors.first
   end
 
   def search
     @search = params[:search]
     @resources = Resource.search(params[:search],
-    field_weights: {title: 20, tags: 17, description: 10, author: 5},
+      :with =>{:group_id=>current_user.group_id},
+      field_weights: {title: 20, tags: 17, description: 10, author: 5},
       match_mode: :boolean,
       )
     render 'index'
@@ -40,6 +44,8 @@ class ResourceController < ApplicationController
   def file
    id = params[:id]
    @resource = Resource.find id
+   @resource.views +=1
+   @resource.save
   end
 
   def download
@@ -54,10 +60,9 @@ class ResourceController < ApplicationController
       @title = resource.title
       Resource.delete id
       @delete = true
-      index
-      render :index
+      redirect_to root_path
     else
-      redirect_to :back
+      redirect_to root_path, notice: "No puedes borrar este recurso"
     end
   end
 
@@ -70,7 +75,7 @@ class ResourceController < ApplicationController
         @listTags[x] = tags[x].name
       }
     else
-      redirect_to :back
+      redirect_to root_path, notice: "No puedes editar este recurso"
     end
   end
 

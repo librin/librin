@@ -1,7 +1,7 @@
 class CreateComments < ActiveRecord::Migration
   def change
     create_table :comments do |t|
-      t.string :comment
+      t.text :comment
 
       t.belongs_to :user, index:true
       t.belongs_to :resource, index:true

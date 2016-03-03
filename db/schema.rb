@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160229192045) do
     t.string   "author",             limit: 255
     t.text     "description",        limit: 65535
     t.integer  "views",              limit: 4
+    t.float    "average",            limit: 24
     t.integer  "user_id",            limit: 4
     t.integer  "group_id",           limit: 4
     t.datetime "created_at",                       null: false

@@ -5,6 +5,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :author
       t.text :description
       t.integer :views
+      t.float :average
       
       t.belongs_to :user, index:true
       t.belongs_to :group, index:true

@@ -33,7 +33,7 @@
 			<%= submit_tag "Envia recomendación", class: "btn btn-success"%><br>
 		<%end%>
 
-   <div>Valoración media: <%= @resource.get_votes %></div>
+   <div>Valoración media: <%= @resource.average %></div>
 	<% if @resource.votable(current_user) == true %>
 	  <%= form_tag({controller:"vote",action:"create"},method:"get") do%>
 	    <fieldset class="rating">
