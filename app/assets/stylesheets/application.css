@@ -7098,39 +7098,82 @@ input:focus,
     height: 475px;
 }
 
+
+
 .form-general2{
 	padding: 1em 3em;
 	margin: 1em 25%;
-	width: 40%
-	
+	width: 600px;
+	float: left;
 	border-style: groove;
 	border: 2px groove #3e3f3a;
 	background-color: #E5E4E2;
 	border-radius: 24px 24px 24px 24px;
 	-moz-border-radius: 24px 24px 24px 24px;
 	-webkit-border-radius: 24px 24px 24px 24px;
-
-	margin-left: 10%;
-	float: left;
+	margin-left: 50px
 }
 
 .interact{
-	clear: left;
 	float: right;
-	margin-right: 5%
+	width: 300px;
 }
-
 .comment{
-	clear: left;
+	overflow: auto;
+	clear: both;
 	margin-left: 15%;
 }
 
+.add_comment{
+	overflow: auto;
+	clear: both;
+	width: 70%;
+	height:20%;
+	margin-left: 8%;
+	background-color: #bfff80;
+	border-radius:1em;
+	padding-top: 12px;
+	padding-left: 12px;
+	padding-bottom: 12px;
+}
 .avatare{
 	border: 2px solid grey;
 	margin: 0;
 	padding: 0;
 	border-radius: 800px;
 	overflow: hidden;
+	float:left
 }
+.comentario{
+	float:right
+}
+.avatarComentario{
+	width: 800px:
+	border-color: #bfff80;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

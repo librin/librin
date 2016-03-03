@@ -1,10 +1,10 @@
-<h4>Hola <%= current_user.userName %></h4>
-
-
+<!-- <h4>Hola <%= current_user.userName %></h4> -->
+ 
 <h1>Descarga tu libro</h1><br>
 
-<div class="form-general2">
-	
+<div style="width:700px;">
+	<div style="width:600px;">
+  <div class="form-general2">
 	<div class = "portada"><%= image_tag @resource.cover.url(:medium)%></div>
 	<h3><%= @resource.title %></h3>
 	<div class = "autor">AUTOR: <%= @resource.author %></div>
@@ -22,11 +22,13 @@
 	<a href="/resource/delete?id=<%= @resource.id%>", class="btn btn-warning">BORRAR</a>
 	<a href="/resource/show_update?id=<%= @resource.id%>", class="btn btn-warning">EDITA</a>
 	<% end %>
-	
-</div>	
+	</div>
+  </div>
+</div>
 
-<div class = "interact">
-		<h5>Introduce el nombre de usuario para recomendar este rescurso</h5>
+<div class = "interact" style="width:500px;">
+	  <div style="width:400px;">
+		<h5>Introduce el nombre de usuario para recomendar este recurso</h5>
 		<%= form_tag({controller:"librin_mail", action:"suggestion"}, method:"get") do%>
 			<%= text_field_tag(:userName)%>
 			<%= hidden_field_tag(:id, @resource.id)%>
@@ -47,25 +49,30 @@
 	  &nbsp;&nbsp;&nbsp;&nbsp;<%= submit_tag("Vota!", class: "btn btn-success")%>
 	  <% end %>
 	<%else%>
-			<h6 class="btn btn-info">Ya has votado este recurso</h6>
+			<h5 class="btn btn-info">Ya has votado este recurso</h5>
 	<%end%>
 </div>
-
-
+</div>
 
 <div class ="comment">
-<br><br><br> 
-	<h4>Añade un comentario</h4>
+	<h2>Cuenta que te ha parecido</h2>
+<div class ="add_comment">
+
 	    <%= form_tag({controller:"comment",action:"create"},method:"get") do%>
 		<%= hidden_field_tag(:id,@resource.id)%>
-		<%= text_area_tag :comment, "Comentarios", size: "80x3"%>
+		<%= text_area_tag :comment, "", size: "80x3"%>
 		<%= submit_tag("Comenta!", class: "btn btn-success")%> 
 		<%end%>
+</div>
+<div class ="list_comment">
 <br><br><br> 	
 		<% for comment in @resource.comments %>
-		<div class ="avatarComentario"><%= image_tag(comment.user.avatar, class: "avatare") %>&nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
-			<br> <%= comment.user.email%> 
+		<div class ="avatarComentario"><%= image_tag(comment.user.avatar, class: "avatare") %> <br /> 
+			 &nbsp;&nbsp;&nbsp;&nbsp;<%= comment.user.email%> dice: <br> 
+			 &nbsp;&nbsp;&nbsp;&nbsp;<%=comment.comment%>
+				<br /><br /><br />
 		</div>
 	<%end%>
+</div>
 </div> 
 <br><br><br> 
