@@ -10,14 +10,14 @@ class ResourceController < ApplicationController
   end
 
   def create
-      respond_to do |format|
-    format.html
-    format.json
     @resource = current_user.resources.new(add_params)
-    title =params.require(:resource).permit(:title)
-    title = title[:title]
-    book = GoogleBooks.search(title).first
-    @resource.cover= URI.parse(book.image_link)
+    gBooks= params.permit(:gBooks)
+    if gBooks[:gBooks]== "1"
+    	title =params.require(:resource).permit(:title)
+    	title = title[:title]
+    	book = GoogleBooks.search(title).first
+    	@resource.cover= URI.parse(book.image_link)
+    end
     @resource.views = 0
     @resource.average = 0
     if @resource.save

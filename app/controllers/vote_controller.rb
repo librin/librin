@@ -1,4 +1,6 @@
 class VoteController < ApplicationController
+ before_action :authenticate_user!
+
   def create
     voted=current_user.votes.where(:resource_id => params[:id])
 	if voted.empty?
