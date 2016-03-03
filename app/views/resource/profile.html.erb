@@ -63,6 +63,12 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
 <% end %>
 </div>
 
+	    <%= form_tag({controller:"resource",action:"findBook"},remote: true, method:"get") do%>
+		<%= hidden_field_tag(:id,@resource.id)%>
+		<%= text_field_tag :title%>
+		<%= submit_tag("Comenta!", class: "btn btn-success")%> 
+		<%end%>
+
 <hr />
 
 

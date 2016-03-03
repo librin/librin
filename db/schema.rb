@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20160229192045) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "comment",     limit: 255
+    t.text     "comment",     limit: 65535
     t.integer  "user_id",     limit: 4
     t.integer  "resource_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "comments", ["resource_id"], name: "index_comments_on_resource_id", using: :btree

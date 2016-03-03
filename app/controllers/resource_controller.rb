@@ -10,7 +10,14 @@ class ResourceController < ApplicationController
   end
 
   def create
+      respond_to do |format|
+    format.html
+    format.json
     @resource = current_user.resources.new(add_params)
+    title =params.require(:resource).permit(:title)
+    title = title[:title]
+    book = GoogleBooks.search(title).first
+    @resource.cover= URI.parse(book.image_link)
     @resource.views = 0
     @resource.average = 0
     if @resource.save
@@ -23,6 +30,7 @@ class ResourceController < ApplicationController
       	@resource.addTags(params[:tags])
       end
       redirect_to root_path
+      return
     end
     redirect_to :back, notice: @resource.errors.first
   end
