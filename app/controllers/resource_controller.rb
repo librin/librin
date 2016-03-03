@@ -23,6 +23,7 @@ class ResourceController < ApplicationController
       	@resource.addTags(params[:tags])
       end
       redirect_to root_path
+      return
     end
     redirect_to :back, notice: @resource.errors.first
   end
