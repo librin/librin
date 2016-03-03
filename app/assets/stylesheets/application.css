@@ -7094,40 +7094,67 @@ input:focus,
     left:2px;
 }
 
-
-
-
 .gallery {
     height: 475px;
 }
-.fichero{
-	margin-left: 15%;
-	float: left;
-	width: 30%
 
+
+
+.form-general2{
+  padding: 1em 3em;
+  margin: 1em 25%;
+  width: 600px;
+  float: left;
+  border-style: groove;
+  border: 2px groove #3e3f3a;
+  background-color: #E5E4E2;
+  border-radius: 24px 24px 24px 24px;
+  -moz-border-radius: 24px 24px 24px 24px;
+  -webkit-border-radius: 24px 24px 24px 24px;
+  margin-left: 50px
 }
 
 .interact{
-	float: right;
-	margin-right: 15%
+  float: right;
+  width: 300px;
 }
-
 .comment{
-	clear: left;
-	margin-left: 15%;
+  overflow: auto;
+  clear: both;
+  margin-left: 15%;
 }
 
+.add_comment{
+  overflow: auto;
+  clear: both;
+  width: 70%;
+  height:20%;
+  margin-left: 8%;
+  background-color: #bfff80;
+  border-radius:1em;
+  padding-top: 12px;
+  padding-left: 12px;
+  padding-bottom: 12px;
+}
 .avatare{
-	border: 2px solid grey;
-	margin: 0;
-	padding: 0;
-	border-radius: 800px;
-	overflow: hidden;
+  border: 2px solid grey;
+  margin: 0;
+  padding: 0;
+  border-radius: 800px;
+  overflow: hidden;
+  float:left
+}
+.comentario{
+  float:right
+}
+.avatarComentario{
+  width: 800px:
+  border-color: #bfff80;
 }
 
 .ulfooter{
-  color: #E2E2E2;
-  list-style:none;
-  text-align: center;
-  font-weight: bold;
+ color: #E2E2E2;
+ list-style:none;
+ text-align: center;
+ font-weight: bold;
 }

@@ -34,6 +34,7 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
 
     <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label"><%= f.label :cover, "Portada"%></label>
+
       <div class="col-lg-10">
         <%= f.file_field :cover, class:"form-control", id:"textArea" %>
       </div>
@@ -42,9 +43,20 @@ var tagsArray = <%=@tags.to_json.html_safe%>;
     <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label"><%= f.label :files, "Archivos"%></label>
       <div class="col-lg-10">
-       	<%= file_field_tag "files[]", type: :file, multiple: true, class:"form-control", id:"textArea" %>
+        <%= file_field_tag "files[]", type: :file, multiple: true, class:"form-control", id:"textArea" %>
       </div>
     </div>
+
+
+     <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label"><%= f.label :cover, "Buscar imagen Automaticamente"%></label>
+      <div class="col-lg-10" style="padding-bottom: 50px;">
+        <%= check_box_tag("gBooks", value = "1", checked = false, options = {}) %>
+      </div>
+    </div>
+
+
+
 
      <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label"><%= f.label :tags, "Tags (separados por comas)"%></label>

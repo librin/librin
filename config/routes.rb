@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
+  get 'librin_mail/suggestion'
+  get 'vote/create'
   post 'resource/create'
-
   get 'resource/create'
   get 'resource/search'
   post 'resource/search'
-
   get 'resource/profile'
-
   get 'resource/index'
-
   get 'resource/file'
-   
   get 'resource/download'
   get 'resource/delete'
   get 'comment/create'
+  get 'resource/show_update'
+  post 'resource/show_update'
+  get 'resource/update'
+  post 'resource/update'
+  patch 'resource/update'
+
+
   
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 root to: "resource#index"

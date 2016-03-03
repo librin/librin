@@ -18,6 +18,7 @@ before_filter :configure_sign_up_params, only: [:create]
         resource.group = group
         resource.save
      end
+
   end
 
   # GET /resource/edit

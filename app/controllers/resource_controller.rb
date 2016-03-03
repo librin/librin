@@ -2,15 +2,24 @@ class ResourceController < ApplicationController
  before_action :authenticate_user!
  
   def profile
-         @resource = Resource.new
-         @tags = Tag.all
-         @tags= @tags.each_index {|x| 
-           @tags[x]=@tags[x].name
-         }
+    @tags = Tag.all
+    @tags= @tags.each_index {|x|
+      @tags[x]=@tags[x].name
+    }
+    @resource = Resource.new
   end
 
   def create
     @resource = current_user.resources.new(add_params)
+    gBooks= params.permit(:gBooks)
+    if gBooks[:gBooks]== "1"
+    	title =params.require(:resource).permit(:title)
+    	title = title[:title]
+    	book = GoogleBooks.search(title).first
+    	@resource.cover= URI.parse(book.image_link)
+    end
+    @resource.views = 0
+    @resource.average = 0
     if @resource.save
       if params[:files]
         params[:files].each { |file|
@@ -18,24 +27,22 @@ class ResourceController < ApplicationController
         }
       end
       if params[:tags]
-        tags=params[:tags].split(",")
-        tags.each_index{|x| tags[x]=tags[x].strip}
-        tags.each {|tagS|
-          newTag = Tag.find_or_initialize_by(:name =>tagS)
-          @resource.tags<< newTag
-        }
+      	@resource.addTags(params[:tags])
       end
-        redirect_to root_path
+      redirect_to root_path
+      return
     end
+    redirect_to :back, notice: @resource.errors.first
   end
 
   def search
-        @search = params[:search]
-        @resources = Resource.search(params[:search],
-        field_weights: {title: 20, tags: 17, description: 10, author: 5},
-        match_mode: :boolean,
-     )   
-     render 'index'
+    @search = params[:search]
+    @resources = Resource.search(params[:search],
+      :with =>{:group_id=>current_user.group_id},
+      field_weights: {title: 20, tags: 17, description: 10, author: 5},
+      match_mode: :boolean,
+      )
+    render 'index'
   end
 
   def index
@@ -45,56 +52,63 @@ class ResourceController < ApplicationController
   def file
    id = params[:id]
    @resource = Resource.find id
-   @currentUser = User.find(current_user)
-   @userSharing = @resource.user_id
+   @resource.views +=1
+   @resource.save
   end
 
-  
   def download
     document = Document.find params[:id].to_i
     send_file document.file.path
   end
-    
+
   def delete
-    @delete = true
     id = params[:id]
-    @resource = Resource.find id
-    @title = @resource.title
-    Resource.delete id
-    index
-    render :index
+    resource = Resource.find id
+    if resource.editable(current_user)
+      @title = resource.title
+      Resource.delete id
+      @delete = true
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: "No puedes borrar este recurso"
+    end
   end
- 
-  
+
   def show_update
     @resource = Resource.find(params[:id])
-    tags = @resource.tags
-    @listTags = []
-    tags.each_index{|x|
-                @listTags[x] = tags[x].name
-                }
+    if @resource.editable(current_user)
+      tags = @resource.tags
+      @listTags = []
+      tags.each_index{|x|
+        @listTags[x] = tags[x].name
+      }
+    else
+      redirect_to root_path, notice: "No puedes editar este recurso"
+    end
   end
-  
+
   def update
+     hashResources = params.require(:resource).permit(:id,:title,:description,:author,:files=>[])
+     tags = params.require(:resource).permit(:tags)
+     tags = tags[:tags]
      @resource = Resource.find(params[:id])
-     @resource.update_attributes(add_params)
-     if @resource.save
-       if params[:tags]
-          tags=params[:tags].split(",")
-          tags.each_index{|x| tags[x]=tags[x].strip}
-          tags.each {|tagS|
-            newTag = Tag.find_or_initialize_by(:name =>tagS)
-            @resource.tags<< newTag
-          }
-       end
-     end
-    render 'file'
+     hashResources[:tags] = []
+     @resource.update_attributes(hashResources)
+     @resource.addTags(tags)
+     redirect_to root_path
   end
-  
-  private
 
   def add_params
     params.require(:resource).permit(:title,:description,:author,:cover,:tags,:files=>[])
   end
 
+  def update_params
+
+  end
 end
+
+
+
+
+
+
