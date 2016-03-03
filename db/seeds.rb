@@ -1,14 +1,15 @@
 Group.create!([
-  {name: "test.com", description: "Grupo de testeo nº1", admin: 1},
-  {name: "test2.com", description: "Grupo de testeo nº2", admin: 2}
-])
-User.create!([
-  {email:"test@test.com", password:'12345678',userName:"Usuario1", group_id:1},
-  {email:"test@test2.com", password:'12345678',userName:"Usuario2", group_id:2},
-  {email:"test2@test.com", password:'12345678',userName:"Usuario1", group_id:1},
-  {email:"test2@test2.com", password:'12345678',userName:"Usuario2", group_id:2}
+  {name: "gmail.com", description: "Grupo de testeo nº1", admin: 1},
+  {name: "test2.com", description: "Grupo de testeo nº2", admin: 4}
 ])
 
+User.create!([
+  {email:"irene.morenocano@gmail.com", password:'12345678',userName:"Irene", group_id:1},
+  {email:"pablobuntu@gmail.com", password:'12345678',userName:"Pablo", group_id:1},
+  {email:"jl.rodriguezr18@gmail.com", password:'12345678',userName:"Juanito", group_id:1},
+  {email:"marta.m.calderon@gmail.com", password:'12345678',userName:"Marta", group_id:1},
+  {email:"test@test.com", password:'12345678',userName:"Usuariotest", group_id:2}
+])
 Document.create!([
   {resource_id: 1, file_file_name: "Caso_Practico_15RUBY.pdf", file_content_type: "application/pdf", file_file_size: 638470, file_updated_at: "2016-02-24 11:24:49"},
   {resource_id: 2, file_file_name: "Cinco_Gemas.txt", file_content_type: "text/plain", file_file_size: 6484, file_updated_at: "2016-02-24 11:30:21"},
@@ -32,18 +33,18 @@ Resource.create!([
   {user_id: 1, group_id: 1, views: 0, average: 0, title: "Cinco Gemas Indispensables", author: "CARLOS PARAMIO", description: "Cinco gemas fundamentales para programar en Ruby on Riles", cover_file_name: "gemaruby.jpg", cover_content_type: "image/jpeg", cover_file_size: 19252, cover_updated_at: "2016-02-24 11:30:21"},
   {user_id: 1, group_id: 1, views: 0, average: 0, title: "Let the Right One In", author: "Sergio Arbeo", description: "How to use Devise Gem", cover_file_name: "devise.jpg", cover_content_type: "image/jpeg", cover_file_size: 4144, cover_updated_at: "2016-02-24 11:32:06"},
   {user_id: 1, group_id: 1, views: 0, average: 0, title: "Music Shop", author: "Talentum Class", description: "Music Shop Exercise CRUD", cover_file_name: "Tienda_Discos.jpg", cover_content_type: "image/jpeg", cover_file_size: 85399, cover_updated_at: "2016-02-24 11:35:20"},
-  {user_id: 1, group_id: 1, views: 0, average: 0, title: "MySQL Tutorial", author: "MySQL AB", description: "Tutorial of Database Programme MySQL", cover_file_name: "MySQL.jpg", cover_content_type: "image/jpeg", cover_file_size: 46039, cover_updated_at: "2016-02-24 11:38:25"},
-  {user_id: 1, group_id: 1, views: 0, average: 0, title: "Internet, Hackers y Software Libre", author: "Carlos Gradin", description: "Internet, Hackers y Software Libre", cover_file_name: "Internet__Hackers_y_Software_Libre.jpg", cover_content_type: "image/jpeg", cover_file_size: 17475, cover_updated_at: "2016-02-24 11:40:46"},
-  {user_id: 1, group_id: 1, views: 0, average: 0, title: "Programación en Internet, clientes web", author: "Sergio Luján Mora", description: "Programación en Internet, clientes web", cover_file_name: "Sergio_Lujan_Mora._Progr_en_Internet.jpg", cover_content_type: "image/jpeg", cover_file_size: 41259, cover_updated_at: "2016-02-24 11:42:22"},
-  {user_id: 1, group_id: 1, views: 0, average: 0, title: "Tipos de Gemas RoR", author: "Anónimo", description: "Tipos de Gemas RoR", cover_file_name: "gemaruby.jpg", cover_content_type: "image/jpeg", cover_file_size: 19252, cover_updated_at: "2016-02-24 11:45:35"},
-  {user_id: 1, group_id: 1, views: 0, average: 0, title: "Formularios JS", author: "Anónimo", description: "", cover_file_name: "JS.jpg", cover_content_type: "image/jpeg", cover_file_size: 7136, cover_updated_at: "2016-02-24 11:46:58"},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Guía Usuario Ruby", author: "Anónimo", description: "Guía Usuario Ruby", cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 11:51:15"},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Java Trail", author: "Anónimo", description: "Java", cover_file_name: "java.jpg", cover_content_type: "image/jpeg", cover_file_size: 109236, cover_updated_at: "2016-02-24 11:52:34"},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Ruby on Rails Deusto", author: "Deusto", description: "Deusto Ruby On Rails", cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 12:08:13"},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Devise Course", author: "Anónimo", description: "Course Devise Gem", cover_file_name: "devise.jpg", cover_content_type: "image/jpeg", cover_file_size: 4144, cover_updated_at: "2016-02-24 12:09:43"},
-  {user_id: 2, group_id: 2, views: 0, average: 0, title: "Networking Trail", author: "The King", description: "Networking Trail", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil}
+  {user_id: 2, group_id: 1, views: 0, average: 0, title: "MySQL Tutorial", author: "MySQL AB", description: "Tutorial of Database Programme MySQL", cover_file_name: "MySQL.jpg", cover_content_type: "image/jpeg", cover_file_size: 46039, cover_updated_at: "2016-02-24 11:38:25"},
+  {user_id: 2, group_id: 1, views: 0, average: 0, title: "Internet, Hackers y Software Libre", author: "Carlos Gradin", description: "Internet, Hackers y Software Libre", cover_file_name: "Internet__Hackers_y_Software_Libre.jpg", cover_content_type: "image/jpeg", cover_file_size: 17475, cover_updated_at: "2016-02-24 11:40:46"},
+  {user_id: 3, group_id: 1, views: 0, average: 0, title: "Programación en Internet, clientes web", author: "Sergio Luján Mora", description: "Programación en Internet, clientes web", cover_file_name: "Sergio_Lujan_Mora._Progr_en_Internet.jpg", cover_content_type: "image/jpeg", cover_file_size: 41259, cover_updated_at: "2016-02-24 11:42:22"},
+  {user_id: 3, group_id: 1, views: 0, average: 0, title: "Tipos de Gemas RoR", author: "Anónimo", description: "Tipos de Gemas RoR", cover_file_name: "gemaruby.jpg", cover_content_type: "image/jpeg", cover_file_size: 19252, cover_updated_at: "2016-02-24 11:45:35"},
+  {user_id: 4, group_id: 1, views: 0, average: 0, title: "Formularios JS", author: "Anónimo", description: "", cover_file_name: "JS.jpg", cover_content_type: "image/jpeg", cover_file_size: 7136, cover_updated_at: "2016-02-24 11:46:58"},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Guía Usuario Ruby", author: "Anónimo", description: "Guía Usuario Ruby", cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 11:51:15"},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Java Trail", author: "Anónimo", description: "Java", cover_file_name: "java.jpg", cover_content_type: "image/jpeg", cover_file_size: 109236, cover_updated_at: "2016-02-24 11:52:34"},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Ruby On Rails Tutorial", author: "Anónimo", description: "Ruby On Rails Tutorial", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Ruby on Rails Deusto", author: "Deusto", description: "Deusto Ruby On Rails", cover_file_name: "RoR.jpg", cover_content_type: "image/jpeg", cover_file_size: 10214, cover_updated_at: "2016-02-24 12:08:13"},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Devise Course", author: "Anónimo", description: "Course Devise Gem", cover_file_name: "devise.jpg", cover_content_type: "image/jpeg", cover_file_size: 4144, cover_updated_at: "2016-02-24 12:09:43"},
+  {user_id: 5, group_id: 2, views: 0, average: 0, title: "Networking Trail", author: "The King", description: "Networking Trail", cover_file_name: nil, cover_content_type: nil, cover_file_size: nil, cover_updated_at: nil}
 ])
 Resource::HABTM_Tags.create!([
   {resource_id: 1, tag_id: 1},

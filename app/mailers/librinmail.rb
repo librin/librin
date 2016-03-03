@@ -23,7 +23,7 @@ class Librinmail < ApplicationMailer
     @sender = sender
     @user = user
     
-    mail(to: "irene.morenocano@gmail.com", subject: 'Te recomiendan este libro')
+    mail(to: user.email, subject: 'Te recomiendan este libro')
     return
     
   end

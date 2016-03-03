@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'resource/search'
   get 'resource/profile'
   get 'resource/index'
-  get 'resource/file'
+  get 'resource/file', as: 'file'
   get 'resource/download'
   get 'resource/delete'
   get 'comment/create'
