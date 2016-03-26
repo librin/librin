@@ -1,0 +1,53 @@
+h1
+	span class="fontawesome-lock" Comparte un recurso
+
+hr
+
+div class="form-general"
+
+	= form_for @resource, html: { :multipart => true }, url: {controller: "resource", action: "create", class:"form-horizontal"} do |f|
+	  fieldset
+	    legend Recurso
+
+	    div class="form-group"
+	      label class="col-lg-2 control-label" = f.label :title, "Título"
+	      div class="col-lg-10"
+	      	= f.text_field :title, class:"form-control", id:"inputEmail", placeholder:"Título"
+
+
+	    div class="form-group"
+	      label class="col-lg-2 control-label" = f.label :author, "Autor"
+	      div class="col-lg-10"
+	      	= f.text_field :author, class:"form-control", id:"inputEmail", placeholder:"Autor"
+
+	    div class="form-group"
+	      label for="textArea" class="col-lg-2 control-label" = f.label :description, "Descripción"
+	      div class="col-lg-10"
+	        = f.text_area :description, class:"form-control", id:"textArea"
+
+	    div class="form-group"
+	      label for="textArea" class="col-lg-2 control-label" = f.label :cover, "Portada"
+		  div class="col-lg-10"
+	        = f.file_field :cover, class:"form-control", id:"textArea"
+
+	    div class="form-group"
+	      label for="textArea" class="col-lg-2 control-label" = f.label :files, "Archivos"
+	      div class="col-lg-10"
+	        = file_field_tag "files[]", type: :file, multiple: true, class:"form-control", id:"textArea"
+
+	    div class="form-group"
+	      label for="textArea" class="col-lg-2 control-label"= f.label :cover, "Buscar imagen Automaticamente"
+	      div class="col-lg-10" style="padding-bottom: 50px;"
+	        = check_box_tag("gBooks", value = "1", checked = false, options = {})
+
+	    div class="form-group"
+	      label for="textArea" class="col-lg-2 control-label" = f.label :tags, "Tags (separados por comas)"
+	      div class="col-lg-10"
+	        = text_area_tag :tags
+	    
+		hr
+
+	    div class="form-group"
+	      div class="col-lg-10 col-lg-offset-2"
+	        = f.submit "Comparte!", class:"btn btn-primary"
+hr
