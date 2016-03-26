@@ -1,0 +1,17 @@
+
+-if @search
+  h3 Resultados por #{@search}
+-elsif @delete
+  h3 El recurso ha sido borrado
+-else
+  h3 Recursos disponibles
+  
+div class="gallery"
+    - for resource in @resources
+        div class="resource"
+          a href="/resource/file?id=#{resource.id}"
+            span
+              img src="#{resource.cover.url(:thumb)}"
+          h2 class="small" #{resource.title}
+          h3 class="small" #{resource.author}
+div class="pagination"  #{will_paginate @resources}
