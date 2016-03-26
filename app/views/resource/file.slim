@@ -1,0 +1,79 @@
+h1 Descarga tu libro
+
+div style="width:700px;"
+	div style="width:600px;"
+  		div class="form-general2"
+			div class="portada" = image_tag @resource.cover.url(:medium)
+			h3 = @resource.title
+			div class= "autor" AUTOR: #{@resource.author}
+			div class= "desc"
+				p DESCRIPCIÓN: #{@resource.description}
+			div class= "user" Compartido, amablemente por... #{@resource.user.userName}
+			div class= "tags" 
+				- @resource.tags.each do |tag|
+					a href="/resource/search?search=#{tag.name}" class="label label-info" #{tag.name}
+				
+
+			- for document in @resource.documents
+				a href="/resource/download?id=<%=document.id%>" class="btn btn-primary" DESCARGAR
+		
+			- if @resource.editable(current_user) == true
+				a href="/resource/delete?id=#{@resource.id}" class="btn btn-warning" BORRAR
+				a href="/resource/show_update?id=#{@resource.id}" class="btn btn-warning" EDITA
+
+div class="interact" style="width:500px;"
+	div style="width:400px;"
+		h5 Introduce el nombre de usuario para recomendar este recurso
+		= form_tag({controller:"librin_mail", action:"suggestion"}, remote: true,method:"get") do
+			= text_field_tag(:userName)
+			= hidden_field_tag(:id, @resource.id)
+			= submit_tag "Envia recomendación", class: "btn btn-success"
+		h3 id="suggestion"
+
+	    p Valoración media: #{@resource.average}
+		- if @resource.votable(current_user) == true
+		  	= form_tag({controller:"vote",action:"create"}, method:"get") do
+		    	fieldset class="rating"
+				    input type="radio" id="star5" name="rating" value="5"
+				    label for="star5" title="Rocks!"
+
+				    input type="radio" id="star4" name="rating" value="4"
+				    label for="star4" title="Pretty good"
+
+				    input type="radio" id="star3" name="rating" value="3"
+				    label for="star3" title="Meh"
+
+				    input type="radio" id="star2" name="rating" value="2"
+				    label for="star2" title="Kinda bad"
+
+				    input type="radio" id="star1" name="rating" value="1"
+				    label for="star1" title="Sucks big time"
+		  		= hidden_field_tag(:id,@resource.id)
+		  		= submit_tag("Vota!", class: "btn btn-success")
+		- else
+			h5 class="btn btn-info" Ya has votado este recurso
+
+div class="comment"
+	h2 Cuenta que te ha parecido
+	div class="add_comment"
+		= form_tag({controller:"comment",action:"create"},method:"get") do
+			= hidden_field_tag(:id,@resource.id)
+			= text_area_tag :comment, "", size: "80x3"
+			= submit_tag("Comenta!", class: "btn btn-success")
+	div class="list_comment"
+		br
+		br
+		br	
+		- for comment in @resource.comments
+			div class="avatarComentario" 
+				= image_tag(comment.user.avatar, class: "avatare")
+				br
+				p  #{comment.user.email} dice: 
+				br
+				p  #{comment.comment}
+				br
+				br
+				br
+br
+br
+br
